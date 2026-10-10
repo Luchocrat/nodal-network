@@ -1,0 +1,405 @@
+PROJECT: NODAL
+TASK: FINAL CINEMATIC VIDEO EDIT
+ENGINE: REMOTION
+PRIORITY: URGENT / PRESENTATION DELIVERY
+
+You are acting as a senior film editor,
+motion designer, and Remotion engineer.
+
+Your job is to assemble the NODAL cinematic
+film from existing Seedance-generated video
+clips and reference images.
+
+This is a presentation-critical deliverable.
+
+DO NOT generate new footage.
+DO NOT modify the existing dashboard.
+DO NOT refactor unrelated project code.
+
+FIRST:
+
+1. Locate and read the installed Remotion skill.
+2. Inspect available video and image assets.
+3. Determine actual video durations and frame rates.
+4. Identify clips by their visual content, not
+   just their filenames.
+5. Create a Remotion composition for the final film.
+6. Render a working MP4 as quickly as possible.
+
+If video files are missing, report the missing
+assets clearly and use available still images
+only as explicitly identified fallbacks.
+
+============================================
+01. PROJECT SPECIFICATIONS
+============================================
+
+PROJECT NAME: NODAL
+
+COMPOSITION: NodalFinalFilm
+
+RESOLUTION: 1920 × 1080
+ASPECT RATIO: 16:9
+FRAME RATE: 30 FPS
+
+OUTPUT:
+output/NODAL_FINAL.mp4
+
+FORMAT:
+H.264 MP4
+yuv420p
+High-quality video
+AAC audio when audio is present
+
+TARGET DURATION:
+Approximately 40–55 seconds,
+depending on available footage.
+
+Prioritize preserving the original cinematic
+movements and transformations.
+
+============================================
+02. CREATIVE DIRECTION
+============================================
+
+VISUAL IDENTITY:
+
+Premium technological cinematography.
+Computational biology.
+Futuristic marine infrastructure.
+Underwater architectural visualization.
+Organic cybersigilism.
+
+The film should feel like a sophisticated
+technology product launch combined with
+an ambitious environmental design concept.
+
+AESTHETIC:
+
+Apple-level restraint.
+Cinematic science fiction.
+Organic futuristic architecture.
+Understated motion graphics.
+Exceptional visual continuity.
+
+AVOID:
+
+Generic slideshow transitions.
+Overly aggressive zooms.
+Unnecessary glitch effects.
+Excessive lens flares.
+Random animated particles.
+AI-generated typography.
+New branding elements.
+
+The existing footage is the hero.
+
+Remotion should elevate the editing without
+overpowering the original material.
+
+============================================
+03. CINEMATIC SEQUENCE
+============================================
+
+SCENE 01: THE AWAKENING
+
+Clean NODAL RIDGE structure transitions
+into its computationally activated state.
+
+Visual:
+Ivory architecture.
+Titanium computing core.
+Cyan illumination.
+Subtle computational activation.
+
+Use the existing F01 → F02 clip if available.
+
+Target: approximately 5–6 seconds.
+
+--------------------------------------------
+
+SCENE 02: THE GENESIS
+
+NODAL RIDGE evolves from activated
+computational architecture into a
+coral-colonized structure.
+
+Five years of idealized biological growth
+are compressed into a cinematic timelapse.
+
+Use the F02 → F03 Seedance clip.
+
+Preserve the original organic transformation.
+
+Target: approximately 8–10 seconds.
+
+--------------------------------------------
+
+SCENE 03: THE SURFACE GATEWAY
+
+Introduce NODAL ATOL.
+
+Use the available RIDGE-to-ATOL
+cinematic bridge and ATOL deployment
+footage in a coherent sequence.
+
+Preferred visual narrative:
+
+Coral-covered RIDGE
+→ ATOL studio hero
+→ ATOL deployed in the ocean.
+
+However, if the available Ascension clip
+already transitions directly from RIDGE
+to ATOL in the ocean, use that route.
+
+Do not repeat ATOL's ocean introduction
+or use two contradictory deployment shots.
+
+Preserve the recognizable asymmetric ATOL
+architecture, its solar arrays, antennas,
+and signature structural spike.
+
+Target: approximately 7–10 seconds.
+
+--------------------------------------------
+
+SCENE 04: THE DESCENT
+
+ATOL transitions into the complete
+underwater NODAL network.
+
+The camera travels beneath the ocean
+surface, revealing connected underwater
+computational and habitat structures.
+
+Use the existing F04 → F05 clip.
+
+The sequence must communicate:
+
+One connected marine infrastructure system.
+
+Target: approximately 7–10 seconds.
+
+--------------------------------------------
+
+SCENE 05: EARTHBOUND
+
+The camera ascends from the underwater
+network into a planetary orbital view.
+
+Reveal Florida and the surrounding
+Atlantic waters.
+
+The NODAL network forms an enormous
+cybersigil-inspired pattern in the ocean.
+
+Use the F05 → F06 Seedance clip.
+
+This is a conceptual future-scale
+visualization, not a real orbital photograph
+of existing infrastructure.
+
+Target: approximately 7–10 seconds.
+
+--------------------------------------------
+
+SCENE 06: THE FINAL SIGNAL
+
+Begin with the orbital view of Earth.
+
+The luminous NODAL network converges
+toward a single point of light.
+
+Transition elegantly into black.
+
+Reveal the original NODAL logo.
+
+Use the F06 → LOGO clip if available.
+
+IMPORTANT:
+
+The final NODAL typography must remain
+perfectly accurate.
+
+Use the original supplied LogoPage.png
+as the definitive final frame.
+
+If the generated video distorts the
+wordmark or Lucho signature, cut away
+before the distortion and reveal
+the original logo artwork instead.
+
+Hold the original logo image on pure
+black for at least 2 seconds.
+
+No additional tagline.
+
+============================================
+04. EDITING AND TRANSITIONS
+============================================
+
+Use the existing camera movement inside
+the generated footage whenever possible.
+
+Trim dead frames and repeated motion.
+
+For transitions between clips:
+
+- Prefer clean, invisible edits.
+- Use matching movement and lighting.
+- Use very short dissolves only when needed.
+- Never obscure important architecture.
+- Avoid duplicate frames at clip boundaries.
+
+If adjacent clips share the same endpoint
+and starting frame, trim to avoid an
+unnecessary freeze or repeated movement.
+
+Use subtle easing for any Remotion-generated
+camera movement.
+
+Never stretch footage unnaturally.
+
+Preserve 16:9 framing without distortion.
+
+============================================
+05. SOUND DESIGN
+============================================
+
+Use supplied music and sound assets
+if available.
+
+If no music is available, preserve original
+clip audio where useful and avoid adding
+unlicensed music.
+
+Suggested sound progression:
+
+AWAKENING:
+Deep electronic activation.
+
+GENESIS:
+Organic growth textures and atmospheric
+synthesis.
+
+ATOL:
+Expansive cinematic sound.
+
+DESCENT:
+Underwater ambience and low-frequency
+transitions.
+
+EARTHBOUND:
+Gradual cinematic crescendo.
+
+FINAL SIGNAL:
+One restrained crystalline tone.
+
+Then silence over the final logo.
+
+Avoid abrupt audio cuts.
+
+Use short audio fades where appropriate.
+
+Maintain consistent perceived loudness.
+
+============================================
+06. BRANDING
+============================================
+
+Use the existing NODAL identity.
+
+Do not recreate the logo using a font.
+
+Use the original supplied logo artwork.
+
+Preserve the exact:
+
+- NODAL wordmark
+- Four-pointed symbol
+- Lucho lettering signature
+- White-on-black treatment
+- Original spacing and proportions
+
+No invented typography.
+
+No animated text overlays during the
+cinematic sequences unless already
+present in the supplied footage.
+
+============================================
+07. REMOTION IMPLEMENTATION
+============================================
+
+Use the installed Remotion skill and
+the project's existing conventions.
+
+Create a clear, editable composition.
+
+Separate:
+
+- Asset manifest
+- Timeline configuration
+- Video sequences
+- Transitions
+- Audio
+- Final logo sequence
+
+Determine actual clip durations using
+video metadata.
+
+Use those durations to calculate the
+composition timeline.
+
+Avoid unnecessary new dependencies.
+
+Ensure every asset path resolves.
+
+If necessary, make a reduced-resolution
+test render before the final export.
+
+============================================
+08. QUALITY CONTROL
+============================================
+
+Verify:
+
+1. Every clip loads.
+2. No black frames appear unintentionally.
+3. No missing media.
+4. No duplicated scene introductions.
+5. No distorted aspect ratios.
+6. Audio plays without clipping.
+7. The final logo remains perfectly legible.
+8. The MP4 opens in standard video players.
+9. The finished film ends on the supplied
+   original logo artwork.
+
+============================================
+09. DELIVERY
+============================================
+
+DELIVER:
+
+1. output/NODAL_FINAL.mp4
+2. Editable Remotion project
+3. Final duration
+4. List of included scenes
+5. Report of any omitted or missing clips
+
+Render the video.
+
+Do not stop after writing code.
+
+Do not spend time on optional polish
+until a playable MP4 exists.
+
+If rendering fails, simplify transitions
+and attempt the export again.
+
+PRIORITY:
+
+FINISHED VIDEO > TRANSITIONS > AUDIO POLISH
+
+EXECUTE NOW.

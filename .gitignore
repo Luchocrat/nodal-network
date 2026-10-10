@@ -9,3 +9,10 @@ node_modules/
 !.env.example
 *.tsbuildinfo
 NODAL_STARTER/web/.cache/
+
+# Heavy render output and film media: keep out of git (host as GitHub Release or external link)
+output/
+nodal-film/node_modules/
+nodal-film/public/clips/
+nodal-film/public/audio/
+nodal-film/out/

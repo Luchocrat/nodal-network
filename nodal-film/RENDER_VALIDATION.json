@@ -1,0 +1,92 @@
+{
+  "generated_at_utc": "2026-10-10T20:07:40.147277+00:00",
+  "render_path": "/Users/luchoescobar/Documents/studio/NODALHackathon-2026/output/NODAL_FINAL.mp4",
+  "passed": true,
+  "checks": {
+    "full_decode": {
+      "passed": true,
+      "exit_code": 0,
+      "decode_errors": ""
+    },
+    "audio_loudness_and_clipping": {
+      "passed": true,
+      "integrated_lufs": -21.42,
+      "true_peak_dbtp": -3.13,
+      "loudness_range_lu": 7.6,
+      "clipping_detected": false,
+      "true_peak_ceiling_dbtp": -2
+    },
+    "final_two_seconds_silence": {
+      "passed": true,
+      "from_seconds": 44.833333333333336,
+      "duration_seconds": 2.0,
+      "max_volume_dbfs": -91.0,
+      "silence_threshold_dbfs": -80
+    },
+    "unintended_black_frames": {
+      "passed": true,
+      "nearly_pure_black_intervals": [],
+      "picture_black_ratio": 0.99999,
+      "pixel_black_threshold": 0.01,
+      "minimum_duration_seconds": 0.02
+    },
+    "ending_matches_approved_source_frame": {
+      "passed": true,
+      "ssim": 0.99375,
+      "minimum_ssim": 0.99,
+      "frames_compared": 60,
+      "comparison_resolution": "1280x720",
+      "reference_path": "/Users/luchoescobar/Downloads/Nodal_6.mp4",
+      "reference_frame": 240,
+      "error": null
+    },
+    "ending_is_frozen": {
+      "passed": true,
+      "ssim": 0.999999,
+      "minimum_ssim": 0.99,
+      "frames_compared": 60,
+      "comparison_resolution": "1280x720",
+      "reference_path": "/Users/luchoescobar/Documents/studio/NODALHackathon-2026/output/NODAL_FINAL.mp4",
+      "reference_frame": 1404,
+      "error": null
+    },
+    "delivery_metadata": {
+      "passed": true,
+      "actual": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "duration": "46.833333",
+            "nb_frames": "1405"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "duration": "46.848000",
+            "nb_frames": "2198"
+          }
+        ],
+        "format": {
+          "duration": "46.848000"
+        }
+      },
+      "expected_frames": 1405,
+      "expected_duration_seconds": 46.833333333333336
+    }
+  },
+  "ending_authorization": "User approved Nodal_6.mp4 exact final source frame at 10 seconds, held for two seconds; no PNG ending."
+}

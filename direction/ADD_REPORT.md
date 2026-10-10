@@ -6,7 +6,7 @@ project_key: NODALHackathon-2026
 run-id: no-tf-baseline
 status: locked
 execution_phase: blueprint
-lock_version: 1
+lock_version: 2
 approved_by: Lucho
 approved_at: 2026-10-10
 source_brief: ../NODAL_STARTER/HANDOFF.md
@@ -18,6 +18,8 @@ updated_at: 2026-10-10
 # NODAL / ADD REPORT
 
 **LOCKED v1: Marine Observatory governs the interface; selective Oceanic Research Console behavior supports decisions. Organic expression belongs primarily to architecture and connections. Approved by Lucho on October 10, 2026.**
+
+> **AMENDED → LOCKED v2 (Lucho, 2026-10-10).** Skin amendment only; the Thesis, Signature Move rule, claims and color tokens are unchanged. DD-02 typography is now Aspekta + Nyght Serif + IBM Plex Mono, from the Font Pantry. DD-03 composition becomes water-column strata, a borderless network hero, a sticky decision rail and an evidence ledger. DD-04 gains additive depth/isobath/meniscus tokens and the shell corner. The Signature Move gains the **Tether** production rule. Forbidden Gravity explicitly refuses "liquid glass". Full record: [v2 Redirect and Amendment](ADD_V2_REDIRECT.md) · [font-pairing-decision.md](font-pairing-decision.md) · executor brief [CURSOR_RESKIN_BRIEF.md](CURSOR_RESKIN_BRIEF.md). The v1 decisions below are preserved as history; where they conflict with v2, v2 governs.
 
 This direction was established using the actual Artsonist Design Director v0.1.0 at `/Users/luchoescobar/.agents/skills/artsonist-design-director/SKILL.md`, then locked after Lucho's explicit “Approved” response. Its thesis, provenance, channel map, Signature Move and nine proofs are applied below. The requested `ADD_REPORT.md` consolidates the canonical direction packet rather than creating a duplicate `design-direction.md`. Production implementation and deployment evidence retain their separate owner checks.
 
@@ -224,6 +226,7 @@ No direction amendment has occurred. The decisions are unchanged from the propos
 | Date | Event | Previous state | Recorded state | Approval source | Scope |
 |---|---|---|---|---|---|
 | 2026-10-10 | Initial direction approval | proposed / version 0 | locked / version 1 | Lucho: “Approved” | A-led hybrid, thesis, Signature Move, DD-02/03/04/06 and their handoff expression; deferred fonts and authentic-asset choices remain separate |
+| 2026-10-10 | v2 skin amendment (Director: Don Claude, Redirect → Amend) | locked / version 1 | locked / version 2 | Lucho, explicit answers: Type “A · Aspekta + Nyght Serif”; Liquid “Water-column continuity”; “Lock v2 + send to Cursor” | DD-02 superseded (Pantry type trio); DD-03 superseded (strata, hero, sticky rail, ledger; proposition to header); DD-04 additive tokens + shell corner; Signature Move Tether rule; Forbidden Gravity adds liquid-glass refusal. v1 rows retained above as history. Ledger record of the font pairing deferred until production gates close and the pre-existing ledger change is resolved |
 
 ## Handoff Files
 

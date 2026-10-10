@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "project": "NODAL",
+  "composition": {
+    "id": "NodalFinalFilm",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "assets": [
+    {
+      "id": "Nodal_1",
+      "filename": "Nodal_1.mp4",
+      "sourcePath": "/Users/luchoescobar/Downloads/Nodal_1.mp4",
+      "publicPath": "clips/Nodal_1.mp4",
+      "included": true,
+      "editorialRole": "The Awakening / The Genesis",
+      "editorialSummary": "Ivory RIDGE activates around 2–3.5 seconds, then gains coral around 3.5–8 seconds. This single clip contains both opening transformations.",
+      "format": {
+        "durationSeconds": 10.08,
+        "sizeBytes": 9919043,
+        "bitRate": 7872256,
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "video": {
+        "durationSeconds": 10.041667,
+        "fps": 24.0,
+        "frameRate": "24/1",
+        "width": 1280,
+        "height": 720,
+        "codec": "h264",
+        "profile": "High",
+        "pixelFormat": "yuv420p",
+        "frameCount": 241,
+        "timeBase": "1/12288",
+        "bitRate": 7746452
+      },
+      "audio": {
+        "durationSeconds": 10.08,
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRate": 32000,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "frameCount": 316,
+        "timeBase": "1/32000",
+        "bitRate": 130785
+      }
+    },
+    {
+      "id": "Nodal_2",
+      "filename": "Nodal_2.mp4",
+      "sourcePath": "/Users/luchoescobar/Downloads/Nodal_2.mp4",
+      "publicPath": "clips/Nodal_2.mp4",
+      "included": true,
+      "editorialRole": "The Surface Gateway",
+      "editorialSummary": "Coral-covered RIDGE passes through the computational core and reveals ATOL already deployed in the ocean.",
+      "format": {
+        "durationSeconds": 10.08,
+        "sizeBytes": 12063433,
+        "bitRate": 9574153,
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "video": {
+        "durationSeconds": 10.041667,
+        "fps": 24.0,
+        "frameRate": "24/1",
+        "width": 1280,
+        "height": 720,
+        "codec": "h264",
+        "profile": "High",
+        "pixelFormat": "yuv420p",
+        "frameCount": 241,
+        "timeBase": "1/12288",
+        "bitRate": 9455554
+      },
+      "audio": {
+        "durationSeconds": 10.08,
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRate": 32000,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "frameCount": 316,
+        "timeBase": "1/32000",
+        "bitRate": 130467
+      }
+    },
+    {
+      "id": "Nodal_3",
+      "filename": "Nodal_3.mp4",
+      "sourcePath": "/Users/luchoescobar/Downloads/Nodal_3.mp4",
+      "publicPath": "clips/Nodal_3.mp4",
+      "included": false,
+      "editorialRole": "Alternative ATOL deployment",
+      "editorialSummary": "White-studio ATOL transitions into ocean deployment.",
+      "omissionReason": "Repeats ATOL's introduction and returns to a studio setup after clip 2 has already established ATOL in the ocean.",
+      "format": {
+        "durationSeconds": 10.08,
+        "sizeBytes": 12232610,
+        "bitRate": 9708420,
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "video": {
+        "durationSeconds": 10.041667,
+        "fps": 24.0,
+        "frameRate": "24/1",
+        "width": 1280,
+        "height": 720,
+        "codec": "h264",
+        "profile": "High",
+        "pixelFormat": "yuv420p",
+        "frameCount": 241,
+        "timeBase": "1/12288",
+        "bitRate": 9588540
+      },
+      "audio": {
+        "durationSeconds": 10.08,
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRate": 32000,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "frameCount": 316,
+        "timeBase": "1/32000",
+        "bitRate": 131810
+      }
+    },
+    {
+      "id": "Nodal_4",
+      "filename": "Nodal_4.mp4",
+      "sourcePath": "/Users/luchoescobar/Downloads/Nodal_4.mp4",
+      "publicPath": "clips/Nodal_4.mp4",
+      "included": true,
+      "editorialRole": "The Descent",
+      "editorialSummary": "Descends from ocean ATOL to the connected underwater computational and habitat reef.",
+      "format": {
+        "durationSeconds": 10.08,
+        "sizeBytes": 16180053,
+        "bitRate": 12841311,
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "video": {
+        "durationSeconds": 10.041667,
+        "fps": 24.0,
+        "frameRate": "24/1",
+        "width": 1280,
+        "height": 720,
+        "codec": "h264",
+        "profile": "High",
+        "pixelFormat": "yuv420p",
+        "frameCount": 241,
+        "timeBase": "1/12288",
+        "bitRate": 12734834
+      },
+      "audio": {
+        "durationSeconds": 10.08,
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRate": 32000,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "frameCount": 316,
+        "timeBase": "1/32000",
+        "bitRate": 130540
+      }
+    },
+    {
+      "id": "Nodal_5",
+      "filename": "Nodal_5.mp4",
+      "sourcePath": "/Users/luchoescobar/Downloads/Nodal_5.mp4",
+      "publicPath": "clips/Nodal_5.mp4",
+      "included": true,
+      "editorialRole": "Earthbound",
+      "editorialSummary": "Ascends from the reef network to an orbital view of Florida and the Atlantic, with a luminous marine network pattern.",
+      "format": {
+        "durationSeconds": 10.08,
+        "sizeBytes": 13977886,
+        "bitRate": 11093560,
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "video": {
+        "durationSeconds": 10.041667,
+        "fps": 24.0,
+        "frameRate": "24/1",
+        "width": 1280,
+        "height": 720,
+        "codec": "h264",
+        "profile": "High",
+        "pixelFormat": "yuv420p",
+        "frameCount": 241,
+        "timeBase": "1/12288",
+        "bitRate": 10982319
+      },
+      "audio": {
+        "durationSeconds": 10.08,
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRate": 32000,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "frameCount": 316,
+        "timeBase": "1/32000",
+        "bitRate": 128646
+      }
+    },
+    {
+      "id": "Nodal_6",
+      "filename": "Nodal_6.mp4",
+      "sourcePath": "/Users/luchoescobar/Downloads/Nodal_6.mp4",
+      "publicPath": "clips/Nodal_6.mp4",
+      "included": true,
+      "editorialRole": "The Final Signal",
+      "editorialSummary": "Florida orbital view converges to a single luminous sigil and the approved NODAL logo ending. Hold this clip's final frame.",
+      "format": {
+        "durationSeconds": 10.08,
+        "sizeBytes": 11817864,
+        "bitRate": 9379257,
+        "container": "mov,mp4,m4a,3gp,3g2,mj2"
+      },
+      "video": {
+        "durationSeconds": 10.041667,
+        "fps": 24.0,
+        "frameRate": "24/1",
+        "width": 1280,
+        "height": 720,
+        "codec": "h264",
+        "profile": "High",
+        "pixelFormat": "yuv420p",
+        "frameCount": 241,
+        "timeBase": "1/12288",
+        "bitRate": 9258557
+      },
+      "audio": {
+        "durationSeconds": 10.08,
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRate": 32000,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "frameCount": 316,
+        "timeBase": "1/32000",
+        "bitRate": 131422
+      }
+    }
+  ],
+  "branding": {
+    "mode": "clip6-last-frame",
+    "sourceAssetId": "Nodal_6",
+    "holdSeconds": 2,
+    "approval": "User approved the supplied clip 6 ending and holding its final frame; separate LogoPage artwork is not required."
+  },
+  "music": {
+    "supplied": false,
+    "audioPlan": "Use supplied clip audio with short fades; silence during the final-frame hold."
+  },
+  "metadataNotes": [
+    "Video duration controls image timing; container duration may be slightly longer because of audio.",
+    "audio.frameCount is the encoded audio frame count reported by ffprobe, not a sample count.",
+    "Final film timing is defined separately in the editable timeline configuration."
+  ]
+}
