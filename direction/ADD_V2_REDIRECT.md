@@ -192,3 +192,19 @@ The v1 direction was authored by Glyph; this v2 amendment is authored by Don Cla
 | Date | Event | Previous state | Recorded state | Approval source | Scope |
 |---|---|---|---|---|---|
 | 2026-10-10 | v2 skin amendment | locked v1 | locked v2 | Lucho, explicit answers (Type A; Water-column; Lock v2 + send) | DD-02 type, DD-03 composition, DD-04 additive tokens, Signature Move tether rule, Forbidden Gravity glass refusal |
+
+---
+
+## v2.1 addition — concept film (2026-10-10)
+
+- `GIVEN` Lucho: "add this video somewhere in the site as the potential architecture of the marine NODAL network." The source is `output/NODAL_FINAL_v3.mp4`.
+- `OBSERVED` The film is 46.8 s, 1080p, edited in Remotion from **AI-generated Seedance clips** with generated ambience audio (`NODAL_REMOTION_PROJECT.zip` → `nodal-film/README.md`). Its content includes coral colonizing the shells, ATOL at sea, a network sited on a reef, and a lit network across Florida/Atlantic from orbit.
+- `LOCKED v2.1` (placement delegated by Lucho's "somewhere"; Lucho may veto) — new channel row **CH-08 Concept film**:
+  - Placement: the stage's left column after the AI explanation, beside the sticky decision rail, so the vision sits next to "suitability undetermined". Not in the hero, not a background video, not a SECTION/PLAN view.
+  - Tethered ◇ CONCEPTUAL title and a provenance line.
+  - A verbatim boundary caption: coral is illustration, not an outcome; reef siting is unsurveyed habitat; orbital scale is imagined; nothing changes the assessment.
+  - A text-description chapter list (media alternative; no speech, so no captions needed).
+  - Click-to-play only (`preload="none"`), poster at 27.5 s, 1080p and 720p sources.
+- Refusal: autoplay or muted-loop hero film. That is the v1 Forbidden Gravity "cinematic reef imagery inside a generic glowing AI dashboard."
+- Executor brief: [CURSOR_FILM_ADDENDUM.md](CURSOR_FILM_ADDENDUM.md).
+- Open for Lucho: the Seedance platform and terms for the README; his authorship credit wording; organizer clearance for an AI-generated film produced after the 3:30 PM build window.
