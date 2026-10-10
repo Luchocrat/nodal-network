@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "NODAL",
+  "coordinateSystem": {
+    "unit": "m",
+    "up": "Y",
+    "description": "X east/west, Y up, Z north/south. Hypothetical scene coordinates, not geographic coordinates."
+  },
+  "provenance": {
+    "type": "SIMULATION",
+    "notice": "Illustrative spatial layout only; locations, depth and dimensions are not surveyed or certified."
+  },
+  "surfaceHub": {
+    "id": "ATOL_01",
+    "type": "ATOL",
+    "label": "ATOL Surface Hub",
+    "position": [
+      0,
+      0,
+      0
+    ]
+  },
+  "seafloorJunction": {
+    "id": "JUNCTION_01",
+    "type": "JUNCTION",
+    "position": [
+      0,
+      -12,
+      0
+    ]
+  },
+  "nodes": [
+    {
+      "id": "RIDGE_01",
+      "type": "RIDGE",
+      "label": "Ridge West",
+      "position": [
+        -18,
+        -12,
+        4
+      ],
+      "rotationYDeg": -15,
+      "simulatedWorkloadPct": 35
+    },
+    {
+      "id": "CONNECTOR_01",
+      "type": "CONNECTOR",
+      "label": "West Connector",
+      "position": [
+        -9,
+        -12,
+        2
+      ],
+      "rotationYDeg": 8,
+      "simulatedWorkloadPct": 0
+    },
+    {
+      "id": "CANYON_01",
+      "type": "CANYON",
+      "label": "Canyon Central",
+      "position": [
+        0,
+        -12,
+        -2
+      ],
+      "rotationYDeg": 5,
+      "simulatedWorkloadPct": 25
+    },
+    {
+      "id": "CONNECTOR_02",
+      "type": "CONNECTOR",
+      "label": "East Connector",
+      "position": [
+        10,
+        -12,
+        -1
+      ],
+      "rotationYDeg": -10,
+      "simulatedWorkloadPct": 0
+    },
+    {
+      "id": "RIDGE_02",
+      "type": "RIDGE",
+      "label": "Ridge East",
+      "position": [
+        20,
+        -12,
+        2
+      ],
+      "rotationYDeg": 25,
+      "simulatedWorkloadPct": 30
+    },
+    {
+      "id": "CANYON_02",
+      "type": "CANYON",
+      "label": "Canyon South",
+      "position": [
+        4,
+        -12,
+        15
+      ],
+      "rotationYDeg": -20,
+      "simulatedWorkloadPct": 10
+    }
+  ],
+  "connections": [
+    {
+      "source": "ATOL_01",
+      "target": "JUNCTION_01",
+      "kind": "UMBILICAL"
+    },
+    {
+      "source": "JUNCTION_01",
+      "target": "CANYON_01",
+      "kind": "POWER_DATA"
+    },
+    {
+      "source": "RIDGE_01",
+      "target": "CONNECTOR_01",
+      "kind": "POWER_DATA"
+    },
+    {
+      "source": "CONNECTOR_01",
+      "target": "CANYON_01",
+      "kind": "POWER_DATA"
+    },
+    {
+      "source": "CANYON_01",
+      "target": "CONNECTOR_02",
+      "kind": "POWER_DATA"
+    },
+    {
+      "source": "CONNECTOR_02",
+      "target": "RIDGE_02",
+      "kind": "POWER_DATA"
+    },
+    {
+      "source": "CANYON_01",
+      "target": "CANYON_02",
+      "kind": "POWER_DATA"
+    }
+  ],
+  "visualization": {
+    "gltfGroupNaming": "NODE__<node.id>",
+    "glbExpectedPath": "visualization/exports/nodal_scene.glb"
+  },
+  "notes": [
+    "Simulated workload is an illustrative UI state, not a hardware capacity claim.",
+    "Connector nodes are not assumed to host compute cartridges.",
+    "No deployment feasibility or marine ecological outcome is established by this configuration."
+  ]
+}

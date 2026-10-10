@@ -1,0 +1,354 @@
+{
+  "contract_version": "1.0",
+  "project": "NODALHackathon-2026",
+  "run_id": "no-tf-baseline",
+  "cycle": 1,
+  "tier": "T2",
+  "note": "Site audit of NODAL_STARTER/web served by `npm start -p 3001`. Primary snapshot: BUILD_ID o2JM1gfWu_ve-_aF4PQZb (built 2026-10-10 14:31:00 EDT; source fingerprint sha256 b303eee5… over src/tests/scripts/public). Functional tests began on BUILD_ID 9GZCV0rGmmFEHczUKh6pd (14:17:54); Cursor rebuilt mid-audit. The diff between the two is limited to Wordmark.tsx (logo image), one footer sentence in Dashboard.tsx:159, logo CSS and public/brand/*.svg; core behaviours were replayed on the new build. Assayer runtime: Claude (Don Claude). The Claude runtime owns visualization/** (GLB); the GLB is NOT integrated into the site, and every GLB criterion is declared UNVERIFIABLE for that reason. The assayer authored neither web/** (Cursor) nor direction/** (Glyph via ADD).",
+  "authorship": {
+    "assayer_authored_direction": false,
+    "assayer_authored_build": false
+  },
+  "population_manifests": {
+    "demo-path": {
+      "source": "HANDOFF.md §3 'Frozen minimal demo scope', steps 1–7",
+      "items": ["S1-branded-dashboard", "S2-noaa-observations-with-state", "S3-select-ridge-or-canyon", "S4-change-simulated-scenario", "S5-deterministic-balance-and-gaps", "S6-gemma-explanation-or-unavailable", "S7-concrete-next-action"]
+    },
+    "six-nodes": {
+      "source": "HANDOFF.md §4 schema line and shared/network.json nodes[]",
+      "items": ["RIDGE_01", "CONNECTOR_01", "CANYON_01", "CONNECTOR_02", "RIDGE_02", "CANYON_02"]
+    },
+    "signature-pairs": {
+      "source": "ADD_REPORT.md Signature Move, 'Dashboard:' line plus architecture caption and AI authorship label (DD-07)",
+      "items": ["architecture-view+CONCEPTUAL", "noaa-value+station/time", "power-balance+SIMULATED", "site-suitability+UNKNOWN", "ai-text+AI-EXPLANATION", "selected-allocation+SIMULATED"]
+    },
+    "noaa-offered-products": {
+      "source": "noaa.server.ts:9-11 verified product list for station 8723214 (excludes not-offered currents, covered by R-15)",
+      "items": ["water_temperature", "water_level", "wind", "air_temperature", "air_pressure"]
+    },
+    "freshness-states": {
+      "source": "DESIGN_SYSTEM.md 'Freshness is an additional axis: FETCHED FROM NOAA / CACHED / OLD / UNAVAILABLE / FETCH ERROR' + HANDOFF 'tidal water level is not current speed' (currents not offered)",
+      "items": ["fetched", "cached", "old", "unavailable", "fetch-error", "not-offered-currents"]
+    },
+    "ai-states": {
+      "source": "User brief §4 'Check loading, failure, unavailable, and outdated-response states' + GemmaPanel route-error branch",
+      "items": ["loading", "failure", "unavailable", "route-error", "outdated"]
+    },
+    "viewports": {
+      "source": "User brief §5 'desktop, tablet, and approximately 390px mobile width … 200% zoom' + projector proxy from DESIGN_SYSTEM owner checks",
+      "items": ["1440x900", "1280x720", "768x1024", "390x844", "720x450-as-200pct"]
+    }
+  },
+  "protected_items": [
+    { "id": "P-01", "claim": "Two-column shell, guided path and panel order (network/evidence left; scenario → assessment → Gemma right)", "evidence": "Dashboard.tsx:86-149; rendered 1440x900: network h2 top 360, scenario h2 top 362, assessment 866, Gemma 1686; collapses to one column at 768 (no horizontal overflow at 5 viewports)" },
+    { "id": "P-02", "claim": "Deterministic scenario engine and its rule IDs", "evidence": "scenario.ts:136-300; vitest 19/19 pass; browser 60/80→+20 (f24c5e8e), 80/80→0, 120/80→−40 (54b0d579), 200/0→−200; identical IDs reproduced on both builds" },
+    { "id": "P-03", "claim": "Persistent 'Site ecological suitability: undetermined' + 'Do not deploy yet' block", "evidence": "AssessmentPanel.tsx:46-54; rendered identically in SURPLUS, ZERO MARGIN and SHORTFALL states" },
+    { "id": "P-04", "claim": "Evidence badges with glyph + text + border style", "evidence": "Badge.tsx:3-20; globals.css:75-80 (solid / dashed / dotted+hatch); OBSERVED ● SIMULATED ◐ CONCEPTUAL ◇ UNKNOWN ?" },
+    { "id": "P-05", "claim": "NOAA adapter honesty: not-offered never back-filled, cached keeps original times, unavailable shows '— unavailable'", "evidence": "noaa.server.ts:206-210; noaa.test.ts 5/5; rendered currents card '— unavailable … none is assumed'; stubbed cached/unavailable/refresh-failed states render matching labels in strip and panel" },
+    { "id": "P-06", "claim": "Gemma outdated handling hides stale explanation and names the inputs it described", "evidence": "GemmaPanel.tsx:62,87-91; live test: after 60→120 kW the banner read 'OUTDATED … (it described RIDGE_01, demand 60 kW, generation 80 kW). It is hidden…'" },
+    { "id": "P-07", "claim": "Deterministic fallback explanation clearly labelled 'not AI'", "evidence": "GemmaPanel.tsx:24-37; rendered 'DETERMINISTIC EXPLANATION · computed by NODAL rules … not AI, not an observation' under stubbed network/unavailable/quota failures" },
+    { "id": "P-08", "claim": "SVG network fallback with keyboard-operable node buttons in both Section and Plan", "evidence": "NetworkView.tsx:219-229, 284-301; Enter on RIDGE_02 and Space on CANYON_02 selected them; plan view lists 6 role=button nodes and 7 connection lines" },
+    { "id": "P-09", "claim": "Visible focus treatment", "evidence": "globals.css:46 (2px cyan, 3px offset); 44 consecutive Tab stops logged with outline 2px rgb(79,209,217); SVG nodes show 3px cyan hit-area stroke" },
+    { "id": "P-10", "claim": "Network-wide scenario copy and illustrative per-node allocation (CONNECTOR inspection-only)", "evidence": "ScenarioPanel.tsx:27-29,33; Dashboard.tsx:15-36; rendered CONNECTOR_01 'Inspection only … (illustrative share 0%)', RIDGE_01 21→42 kW at 60→120 kW" }
+  ],
+  "dimensions": {
+    "Specificity": 4,
+    "Applicability": 4,
+    "Clarity": 3,
+    "Boldness": 3,
+    "Conversion Focus": 4,
+    "Brand Fidelity": 4,
+    "Distribution Fit": 3,
+    "Technical Health": 4,
+    "Scalability": 3,
+    "Spread Potential": 3
+  },
+  "baseline": null,
+  "bias_findings": [
+    { "id": "BIAS-01", "category": "demographic", "severity": "MEDIUM", "resolved": false, "finding": "The interface never names the people served or affected coastal communities; community impact (30% of rubric) rests entirely on the spoken demo." },
+    { "id": "BIAS-02", "category": "linguistic", "severity": "MEDIUM", "resolved": false, "finding": "English-only interface in a majority-Spanish-speaking metro; acknowledged in DEMO_STORY as future outreach work. Acceptable for a researcher/planner prototype; do not claim community reach." },
+    { "id": "BIAS-03", "category": "cultural", "severity": "LOW", "resolved": false, "finding": "HANDOFF form-DNA language 'neo-tribal/cybersigilism' is not on the site; if used in the spoken pitch it invites an appropriation reading. Human presentation choice." }
+  ],
+  "criteria": [
+    {
+      "id": "R-01", "source": "Decision at center of demo: \"Given recent Miami-area observations and an illustrative energy-demand scenario, what can we responsibly conclude about a proposed underwater network, and what evidence/action is required next?\"",
+      "type": "PROXY", "criterion": "Proxy logic: 'responsibly conclude' → the seven frozen demo-path steps run end-to-end in the running build because that path is the only mechanism that produces the conclusion. Pass = each step observed working.",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "S1 NODAL logo + task line (Dashboard.tsx:76); S2 strip+panel 30.4 °C / 0.434 m with observed 18:24 UTC and FETCHED FROM NOAA; S3 RIDGE_01/CANYON_01/RIDGE_02/CANYON_02 selected; S4 demand 60→120; S5 +20→−40 kW with 5 UNKNOWN gaps; S6 two real Gemma responses (8.2 s each); S7 action switched COMMISSION-LOCAL-STUDIES → MITIGATE-SHORTFALL.",
+      "falsifier": "A step that errors, shows nothing, or needs a manual workaround; walked the path in the browser at 1440x900 on both builds.",
+      "population": { "mode": "ENUMERATED", "source": "manifest demo-path", "manifest": "demo-path", "checked": ["S1-branded-dashboard", "S2-noaa-observations-with-state", "S3-select-ridge-or-canyon", "S4-change-simulated-scenario", "S5-deterministic-balance-and-gaps", "S6-gemma-explanation-or-unavailable", "S7-concrete-next-action"] }
+    },
+    {
+      "id": "R-02", "source": "People served: Miami-area marine researchers, coastal resilience teams, and environmental/infrastructure planners screening proposed interventions. (Demo 0:00–0:20: Miami environmental accountability problem, intended researchers/planners.)",
+      "type": "PROXY", "criterion": "Proxy logic: 'two-minute comprehension of the problem' → the first viewport names the intended users, Miami, and the accountability problem in on-screen copy, because a judge reads the header before anything else.",
+      "method": "copy-read", "weight": "HIGH", "verdict": "PARTIAL", "concept": false,
+      "evidence": "First viewport (1280x720, 1440x900) shows the task line, the 'Not an operating data center…' disclaimer and the aspiration motto (Dashboard.tsx:76-80). No mention of the users, of Miami (the strip says 'Virginia Key · 8723214'), or of 'environmental accountability precedes deployment'; the accountability line sits in the footer (Dashboard.tsx:153).",
+      "falsifier": "Header copy with no audience, place or problem; read the rendered header and strip text at 1280x720 and 1440x900.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "first-viewport header and strip copy" }
+    },
+    {
+      "id": "R-03", "source": "shared/network.json defines six underwater nodes (RIDGE_01, CONNECTOR_01, CANYON_01, CONNECTOR_02, RIDGE_02, CANYON_02)",
+      "type": "DIRECT", "criterion": "Each of the six nodes appears in the list and the SVG with its exact ID, type and label, and selecting it shows its network.json workload share.",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "src/data/network.json byte-identical to shared/network.json (cmp). At 60 kW: RIDGE_01 35%→21 kW, CONNECTOR_01 inspection-only 0%, CANYON_01 25%→15 kW, CONNECTOR_02 0%, RIDGE_02 30%→18 kW, CANYON_02 10%→6 kW; list and SVG aria-pressed agreed for each.",
+      "falsifier": "A missing/renamed ID, a share differing from network.json, or list/SVG disagreeing; clicked each node and read .selected text plus both aria-pressed sets.",
+      "population": { "mode": "ENUMERATED", "source": "manifest six-nodes", "manifest": "six-nodes", "checked": ["RIDGE_01", "CONNECTOR_01", "CANYON_01", "CONNECTOR_02", "RIDGE_02", "CANYON_02"] }
+    },
+    {
+      "id": "R-04", "source": "one ATOL_01 surface hub, and JUNCTION_01. connections uses source / target IDs.",
+      "type": "DIRECT", "criterion": "ATOL_01 and JUNCTION_01 are drawn as supporting infrastructure and the seven schema connections are drawn between their endpoints.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "Plan view: 7 connection lines (DOM count) from network.connections via pos() (NetworkView.tsx:201-204); label 'ATOL_01 (surface) · JUNCTION_01 (−12 m, beneath)'. Section view: umbilical path labelled 'UMBILICAL → JUNCTION_01' + 6 POWER_DATA paths. Caption: 'ATOL and the seabed junction are supporting infrastructure, not extra compute nodes' (Dashboard.tsx:134).",
+      "falsifier": "Fewer than 7 links, links to wrong endpoints, or ATOL presented as a compute node; counted DOM lines and read endpoint code.",
+      "population": { "mode": "ENUMERATED", "source": "network.json connections[] + surfaceHub + seafloorJunction", "items": ["ATOL_01>JUNCTION_01", "JUNCTION_01>CANYON_01", "RIDGE_01>CONNECTOR_01", "CONNECTOR_01>CANYON_01", "CANYON_01>CONNECTOR_02", "CONNECTOR_02>RIDGE_02", "CANYON_01>CANYON_02", "ATOL_01", "JUNCTION_01"], "checked": ["ATOL_01>JUNCTION_01", "JUNCTION_01>CANYON_01", "RIDGE_01>CONNECTOR_01", "CONNECTOR_01>CANYON_01", "CANYON_01>CONNECTOR_02", "CONNECTOR_02>RIDGE_02", "CANYON_01>CANYON_02", "ATOL_01", "JUNCTION_01"] }
+    },
+    {
+      "id": "R-05", "source": "Selection: update outline, ID/family text and simulated allocation together. Keep keyboard/button selection available alongside 3D picking.",
+      "type": "DIRECT", "criterion": "Selecting through list click, list keyboard, SVG click, SVG Enter and SVG Space updates the list state, SVG state and selected-node panel together.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "List click (6 nodes), list Enter (CANYON_01), SVG click (RIDGE_01 from CANYON_02), SVG Enter (RIDGE_02), SVG Space (CANYON_02) each changed .selected text and both aria-pressed sets to the same ID.",
+      "falsifier": "One surface updating while another lags or stays stale; read all three after each input.",
+      "population": { "mode": "ENUMERATED", "source": "input modes named by the brief line", "items": ["list-click", "list-enter", "svg-click", "svg-enter", "svg-space"], "checked": ["list-click", "list-enter", "svg-click", "svg-enter", "svg-space"] }
+    },
+    {
+      "id": "R-06", "source": "Calculation: netPowerKw = simulatedGenerationKw - simulatedDemandKw. (User brief: check positive/zero/negative power balances.)",
+      "type": "DIRECT", "criterion": "Rendered net power equals generation minus demand for positive, zero, negative and extreme inputs, with Unicode minus and status text.",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "60/80 → '+20 kW SURPLUS'; 80/80 → '0 kW ZERO MARGIN'; 120/80 → '−40 kW ▼ SHORTFALL'; 200/0 → '−200 kW ▼ SHORTFALL'; NET pill mirrored each (Dashboard.tsx:105-107). scenario.test.ts covers the same.",
+      "falsifier": "Wrong sign/magnitude, hyphen-minus, or a status label disagreeing with the number; set sliders and read .net and the NET pill.",
+      "population": { "mode": "ENUMERATED", "source": "user brief §2 power-balance cases + range extremes", "items": ["positive", "zero", "negative", "extreme"], "checked": ["positive", "zero", "negative", "extreme"] }
+    },
+    {
+      "id": "R-07", "source": "Any battery-runtime estimate uses availableBatteryEnergyKWh / max(0, -netPowerKw) and only when there is a shortfall; expose assumptions",
+      "type": "DIRECT", "criterion": "Runtime shows kWh ÷ shortfall during shortfall, UNKNOWN when the battery is off, and is hidden in surplus.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "150 kWh at −40 kW → '3.75 h (optional, ignores losses)'; battery unchecked → 'Battery capacity is not set, so runtime is UNKNOWN' and field disabled; 0 kWh → '0 h'; surplus (60/80) → no runtime line. See B-01/B-02 for input-handling bugs.",
+      "falsifier": "Runtime in surplus, infinity, or a number when battery is off; toggled checkbox and values during shortfall and surplus.",
+      "population": { "mode": "ENUMERATED", "source": "HANDOFF battery rule cases", "items": ["shortfall-150kWh", "shortfall-battery-off", "shortfall-0kWh", "surplus-hidden"], "checked": ["shortfall-150kWh", "shortfall-battery-off", "shortfall-0kWh", "surplus-hidden"] }
+    },
+    {
+      "id": "R-08", "source": "User brief §2: check … reset behavior",
+      "type": "DIRECT", "criterion": "Reset scenario restores 60 kW / 80 kW / 150 kWh / battery on and recomputes the assessment.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "From 200/0/0 kWh with CANYON_01 selected, Reset → demand 60, gen 80, battery on 150, '+20 kW SURPLUS'; node selection kept (scenario-only reset, labelled 'Reset scenario').",
+      "falsifier": "A control left at its old value or a stale result; read every control and the result after Reset.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "the Reset scenario button" }
+    },
+    {
+      "id": "R-09", "source": "Recommendation changes when the scenario changes. … Assessment must be repeatable when inputs repeat.",
+      "type": "DIRECT", "criterion": "The action ID switches with the energy state and identical inputs reproduce the identical assessment ID.",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "NODAL-ACT-COMMISSION-LOCAL-STUDIES at +20 → NODAL-ACT-MITIGATE-SHORTFALL at −40. RIDGE_01 60/80/150 → f24c5e8e on initial load, after round-trips, and on the rebuilt snapshot; 120/80/150 → 54b0d579 on both builds.",
+      "falsifier": "Same action across states or a changed ID for repeated inputs; compared IDs across reloads and builds.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "assessment action and assessmentId" }
+    },
+    {
+      "id": "R-10", "source": "Regardless of energy result, site ecological suitability is undetermined without local thermal, current, habitat, benthic, and permitting evidence. (User: a favorable energy balance must never imply environmental deployment safety.)",
+      "type": "DIRECT", "criterion": "The undetermined-suitability statement and 'Do not deploy yet' render in surplus, zero-margin and shortfall states, with no green or success treatment of surplus.",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "'.suit' block identical in the three states (AssessmentPanel.tsx:46-54); SURPLUS pill is ivory outline (globals.css state-pill.SURPLUS), no green token exists; surplus action still prescribes local studies (scenario.ts:262-268).",
+      "falsifier": "Suitability text disappearing in surplus or a green/check treatment; inspected the three states.",
+      "population": { "mode": "ENUMERATED", "source": "energy states in scenario.ts", "items": ["surplus", "zero-margin", "shortfall"], "checked": ["surplus", "zero-margin", "shortfall"] }
+    },
+    {
+      "id": "R-11", "source": "Signature Move (LOCKED): Pair every compelling proposition with its evidence boundary in the same reading area. … boundary is legible without hover or a footer visit.",
+      "type": "PROXY", "criterion": "Proxy logic: 'same reading area' → each enumerated proposition has its boundary label visibly adjacent (same component, no hover).",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": true,
+      "evidence": "Network header CONCEPTUAL badge + caption 'Concept visualization; unvalidated' (Dashboard.tsx:104,134); NOAA values with station/observed time/OBSERVED in strip and cards; '+20 kW … ◐ SIMULATED' and NET pill '· SIMULATED'; 'undetermined ? UNKNOWN'; AI text under 'AI EXPLANATION · generated by gemma-4-26b-a4b-it'; allocation '21 kW ◐ SIMULATED'. See R-12 for the viewport-level limit.",
+      "falsifier": "A proposition whose boundary is only in a tooltip, footer or another panel; inspected each pair rendered.",
+      "population": { "mode": "ENUMERATED", "source": "manifest signature-pairs", "manifest": "signature-pairs", "checked": ["architecture-view+CONCEPTUAL", "noaa-value+station/time", "power-balance+SIMULATED", "site-suitability+UNKNOWN", "ai-text+AI-EXPLANATION", "selected-allocation+SIMULATED"] }
+    },
+    {
+      "id": "R-12", "source": "DD-03: Selected context → evidence → scenario → action → explanation | Compact assessment … | Failure condition: Gemma/action require scrolling through every evidence gap",
+      "type": "PROXY", "criterion": "Proxy logic: demo clarity → at demo resolutions the demand control, net result, action and suitability statement are co-visible or one scroll apart, and Explain follows the compact result.",
+      "method": "preview", "weight": "HIGH", "verdict": "PARTIAL", "concept": false,
+      "evidence": "Gaps are collapsed (good). 1280x720: demand slider y 529-557, net result 934-1019, action 1077-1257, suitability 1342-1574, Explain ~1802 → slider and result never share the viewport; action+suitability need a further scroll. 1440x900: net result top 901 (fold 900), action 985, suitability 1250, Explain 1826. Only the NET pill (+20 kW · SIMULATED) updates in the first viewport, without the suitability boundary.",
+      "falsifier": "Result or action off-screen while adjusting demand; measured bounding boxes at both resolutions.",
+      "population": { "mode": "ENUMERATED", "source": "demo resolutions", "items": ["1440x900", "1280x720"], "checked": ["1440x900", "1280x720"] }
+    },
+    {
+      "id": "R-13", "source": "Proper distinction: OBSERVED / SIMULATED / CONCEPTUAL / UNKNOWN. (User: verify that status does not depend solely on color.)",
+      "type": "DIRECT", "criterion": "The four evidence classes and the operating states carry text and glyph or line-style cues in addition to color.",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "Badges: ● OBSERVED solid, ◐ SIMULATED solid amber, ◇ CONCEPTUAL dashed, ? UNKNOWN dotted+hatch (Badge.tsx:3; globals.css:75-80). Energy state as text '▼ SHORTFALL'/'SURPLUS'/'ZERO MARGIN'; freshness as text; selection via aria-pressed, inset bar and dashed SVG outline. Shortfall cable amber is redundant with the NET pill text.",
+      "falsifier": "A state distinguishable only by hue; read each class/state in text and checked border styles.",
+      "population": { "mode": "ENUMERATED", "source": "four evidence classes + operating/freshness/selection states", "items": ["OBSERVED", "SIMULATED", "CONCEPTUAL", "UNKNOWN", "energy-state", "freshness-state", "selection-state"], "checked": ["OBSERVED", "SIMULATED", "CONCEPTUAL", "UNKNOWN", "energy-state", "freshness-state", "selection-state"] }
+    },
+    {
+      "id": "R-14", "source": "Show recent NOAA observations with timestamps, units, original source, and fetched/cached/error state. … Preserve timestamp, units, sensor station ID, source URL",
+      "type": "DIRECT", "criterion": "Each offered product card shows value+unit, observed time (UTC and Miami local), station context, source link and retrieval state, and its value equals NOAA's raw record.",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "/api/noaa 18:26Z: water_temperature 30.4 °C (raw v '30.4'), water_level 0.441 m MLLW q=p (raw '0.441'), wind 6.0/7.0 m/s 165° SSE (raw s/g/d), air_temperature 29.9 °C, air_pressure 1016.4 mb — all observed 18:18Z. Direct NOAA datagetter returned identical records for water_temperature and water_level. Cards show 'Observed … UTC · … EDT', 'Fetched from NOAA', per-product 'NOAA source ↗' (NoaaPanel.tsx:74-100).",
+      "falsifier": "A value differing from NOAA, a missing unit/time, or a card without source; compared parsed vs raw vs direct NOAA.",
+      "population": { "mode": "ENUMERATED", "source": "manifest noaa-offered-products", "manifest": "noaa-offered-products", "checked": ["water_temperature", "water_level", "wind", "air_temperature", "air_pressure"] }
+    },
+    {
+      "id": "R-15", "source": "Fallback observations must be accurately labeled cached with original observation time … Freshness: FETCHED FROM NOAA / CACHED / OLD / UNAVAILABLE / FETCH ERROR … missing value '—' + reason, never zero",
+      "type": "DIRECT", "criterion": "Each freshness state renders its honest label in the top strip and the panel, keeps original times, and never substitutes a numeric value for missing data.",
+      "method": "preview", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "Live: 'FETCHED FROM NOAA'; currents '— unavailable … none is assumed' (NOAA 'Wrong Station ID'). Client-side stubbed responses (server untouched): cached → 'CACHED — NOT LIVE' + per-value '· CACHED' + original 18:24Z; old → 'FETCHED FROM NOAA · OBSERVATION OLD' + 'OLD (75 min)'; unavailable → strip '— unavailable', banner 'Regional context is UNKNOWN', NODAL-OBS-001 → UNKNOWN; fetch error/HTTP 500 → 'REFRESH FAILED — PREVIOUS READINGS' with original observed time. Strip and panel share freshness() (NoaaPanel.tsx:30-49).",
+      "falsifier": "Strip and panel disagreeing, an advanced timestamp, or a zero in place of missing data; rendered each state and read both surfaces.",
+      "population": { "mode": "ENUMERATED", "source": "manifest freshness-states", "manifest": "freshness-states", "checked": ["fetched", "cached", "old", "unavailable", "fetch-error", "not-offered-currents"] }
+    },
+    {
+      "id": "R-16", "source": "DD-07: Add freshness on a separate axis … Failure condition: Fresh fetch hides an old observation. DESIGN_SYSTEM: Retrieval now does not mean observation now.",
+      "type": "DIRECT", "criterion": "The relative-age readout and OLD flag stay true while the page remains open.",
+      "method": "code-read", "weight": "HIGH", "verdict": "PARTIAL", "concept": false,
+      "evidence": "ageMinutes/stale are computed once on the server at response time (noaa.server.ts:201) and the client fetches NOAA only on mount/Refresh (Dashboard.tsx:56). Observed: at ~18:31Z a card still read '10 min old · retrieved 18:27' for an 18:18Z observation (actual 13 min). A page opened an hour before the demo keeps 'FETCHED FROM NOAA · N min old' and never flips to OLD. Absolute observation times stay correct.",
+      "falsifier": "A relative age that does not advance with wall-clock time; compared displayed age to clock and read the code path.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "NOAA relative-age readout and stale flag" }
+    },
+    {
+      "id": "R-17", "source": "No live ocean sensor is installed; do not imply one. (User: regional observations must not appear to be sensors on individual nodes.)",
+      "type": "DIRECT", "criterion": "Regional/shared scope is stated where observations appear and where a node is selected; no node-local reading is shown.",
+      "method": "copy-read", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "Strip 'regional shore station'; panel 'shared by every node. It is not a NODAL sensor, not a reading at the selected node' (NoaaPanel.tsx:121); selected node 'Not a node sensor reading … NOAA context is shared and regional' (Dashboard.tsx:33); assessment 'NOAA provides separate regional context'; Gemma payload note 'Shore-station context; not a NODAL site measurement'.",
+      "falsifier": "A value attached to a node ID or a 'live at RIDGE' framing; read each surface after selecting several nodes.",
+      "population": { "mode": "ENUMERATED", "source": "surfaces where observations or nodes appear", "items": ["strip", "noaa-panel", "selected-node-panel", "assessment-scope-line", "gemma-payload"], "checked": ["strip", "noaa-panel", "selected-node-panel", "assessment-scope-line", "gemma-payload"] }
+    },
+    {
+      "id": "R-18", "source": "Forbidden language: 'ocean-safe,' 'reef restored,' 'storm-ready,' 'self-cooling proven,' 'live node sensor,' 'AI certified.' … Avoid green 'safe to deploy' claims … not a made-up pass/fail environmental score.",
+      "type": "DIRECT", "criterion": "None of the forbidden phrases, risk scores or green deployment states appear in rendered text or UI source.",
+      "method": "copy-read", "weight": "CRITICAL", "verdict": "MET", "concept": false,
+      "evidence": "grep over src/** and README.md plus full rendered page text: no forbidden phrase; 'live' appears only in failure copy ('Live request failed'); no score/index; no green token in globals.css:5-21; slogan carries 'is an aspiration, not proof' (Dashboard.tsx:80).",
+      "falsifier": "Any hit; grepped source and read get_page_text output.",
+      "population": { "mode": "ENUMERATED", "source": "ADD_REPORT forbidden list + HANDOFF score/green exclusions", "items": ["ocean-safe", "reef-restored", "storm-ready", "self-cooling-proven", "live-node-sensor", "ai-certified", "risk-score", "green-deploy-state"], "checked": ["ocean-safe", "reef-restored", "storm-ready", "self-cooling-proven", "live-node-sensor", "ai-certified", "risk-score", "green-deploy-state"] }
+    },
+    {
+      "id": "R-19", "source": "Send the real structured assessment summary to Gemma 4 through Gemini API; display its grounded explanation if configured. (User: verify the explanation corresponds to the current scenario … and acknowledges uncertainty.)",
+      "type": "DIRECT", "criterion": "A real request returns an explanation whose simulated numbers, allocation, action and uncertainty match the assessment JSON for that scenario.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "Run 1 (RIDGE_01 60/80/150, 18:29Z): '+20 kW', '21 kW', action COMMISSION-LOCAL-STUDIES, five gaps listed, 'Ecological suitability remains undetermined', cites real rule IDs. Run 2 (120/80/150): '−40 kW', '42 kW', '3.75 hours', MITIGATE-SHORTFALL, 'Energy results do not imply environmental safety [NODAL-ENV-000]'. Both report 'uncertainty section: present; cites rule IDs: yes'. No invented thresholds.",
+      "falsifier": "A number, action or ID not in the payload, or a safety/suitability claim; compared text to 'Exact JSON sent to Gemma'.",
+      "population": { "mode": "ENUMERATED", "source": "demo scenarios", "items": ["surplus-60-80", "shortfall-120-80"], "checked": ["surplus-60-80", "shortfall-120-80"] }
+    },
+    {
+      "id": "R-20", "source": "Feed it verified assessment JSON and instruct: don't invent observations … (User: verify the explanation … distinguishes observations from assumptions.)",
+      "type": "DIRECT", "criterion": "Observed values quoted in the explanation equal the observations displayed on screen, or the explanation states the observation time it used.",
+      "method": "preview", "weight": "HIGH", "verdict": "MISSED", "concept": false,
+      "evidence": "Both runs said 'water level of 0.434 m' while strip and panel showed 0.441 m observed 18:18Z. The server rebuilt NOAA for the request (gemma.server.ts:58 getNoaa(false), 60 s cache) and sent 18:24Z data; the client panel had not refreshed. The explanation gives no observation time and drops the MLLW datum. Values are real, not invented, but the explanation and the screen disagree.",
+      "falsifier": "Explanation numbers differing from the on-screen observation without a stated time; compared payload observedAtUtc with strip text.",
+      "population": { "mode": "ENUMERATED", "source": "live Gemma runs", "items": ["surplus-run", "shortfall-run"], "checked": ["surplus-run", "shortfall-run"] }
+    },
+    {
+      "id": "R-21", "source": "User brief §4: Check loading, failure, unavailable, and outdated-response states.",
+      "type": "DIRECT", "criterion": "Loading, model failure, no-key unavailable, route error and outdated states each render truthful text and never show a generated-looking paragraph that was not generated.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "Live: loading 'Asking Gemma 4…' button disabled + 'Sending the structured assessment JSON…'; outdated banner after 60→120 kW. Stubbed client responses: route error 'FAILED — could not reach this app's explain route'; unavailable 'UNAVAILABLE — Gemma 4 was not called'; quota 'FAILED — Quota / rate limit (HTTP 429) … No explanation was generated.' Fallback text labelled 'not AI'. See B-03 for ordering copy bug.",
+      "falsifier": "A failure state showing model-like prose or no state at all; triggered each state.",
+      "population": { "mode": "ENUMERATED", "source": "manifest ai-states", "manifest": "ai-states", "checked": ["loading", "failure", "unavailable", "route-error", "outdated"] }
+    },
+    {
+      "id": "R-22", "source": "Verify actual supported model ID (candidate gemma-4-26b-a4b-it); don't assume model access or free quota. (User: confirm the configured model identity from evidence.)",
+      "type": "DIRECT", "criterion": "The configured model ID is evidenced by configuration, a model lookup and a successful generateContent call to that ID.",
+      "method": "manual", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": ".env.local GEMMA_MODEL=gemma-4-26b-a4b-it (key length only inspected, never printed); GET /api/explain → {configured:true, model:'gemma-4-26b-a4b-it', modelAvailable:true}; two POSTs to models/gemma-4-26b-a4b-it:generateContent (gemma.server.ts:140) succeeded. Limit: response modelVersion is not captured (B-06).",
+      "falsifier": "Model 404, a different ID in config, or a success without a real call; read config names, status route and network responses.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "configured Gemma model ID" }
+    },
+    {
+      "id": "R-23", "source": "Verify node selection without mouse; demand with arrow keys; source and Gemma actions in predictable tab order. Focus: 2px cyan outline with offset.",
+      "type": "DIRECT", "criterion": "Keyboard reaches node selection, demand, source links and the Explain button in reading order with visible focus.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "44 Tab stops logged: skip link → strip → 6 path links → SECTION/PLAN → 6 SVG nodes → 6 list buttons → disclosures → Refresh → NOAA links → demand → gen → battery → Reset → 3 disclosures → Explain → footer links; each with 2px rgb(79,209,217) outline or 3px SVG stroke. ArrowRight×5 60→65 (+15 kW), End → 200.",
+      "falsifier": "A trap, skipped control, or invisible focus; logged focusin with computed outline.",
+      "population": { "mode": "ENUMERATED", "source": "brief line tasks", "items": ["node-selection", "demand-arrows", "source-links", "explain-button", "visible-focus"], "checked": ["node-selection", "demand-arrows", "source-links", "explain-button", "visible-focus"] }
+    },
+    {
+      "id": "R-24", "source": "390px/768px/desktop layout … At 200% zoom and narrow widths, wrap IDs/labels without hiding units or outcomes.",
+      "type": "DIRECT", "criterion": "No horizontal overflow, and IDs, units and outcomes are not clipped at the tested viewports.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "scrollWidth == viewport at 1440, 1280, 768, 390 and 720 (200% proxy); no element right edge beyond viewport outside SVG; no clipped .val/.net/.action/.suit/.nodelist .id. 390: 16px gutters, nodelist 2 columns, logo 153×24 alt 'NODAL'.",
+      "falsifier": "scrollWidth > clientWidth or an element with scrollWidth > clientWidth; measured at each viewport.",
+      "population": { "mode": "ENUMERATED", "source": "manifest viewports", "manifest": "viewports", "checked": ["1440x900", "1280x720", "768x1024", "390x844", "720x450-as-200pct"] }
+    },
+    {
+      "id": "R-25", "source": "Controls/meaningful labels 14–16 … never reduced to tiny techno labels. Target at least 4.5:1 for normal text.",
+      "type": "DIRECT", "criterion": "Meaningful labels render at 14px or larger at demo widths and normal text meets 4.5:1 on its rendered surface.",
+      "method": "preview", "weight": "MEDIUM", "verdict": "PARTIAL", "concept": false,
+      "evidence": "HTML labels ≥14px. SVG node IDs (fontSize 15 in a 1000-unit viewBox, NetworkView.tsx:226,298) render 11.7px at 1440, 10.2px at 1280, 9.8px at 768, 4.9px at 390; SVG captions incl. 'CONCEPTUAL' 8.5–11px. Not-triggered rules text at opacity 0.6 (globals.css:137) = 3.63:1. Token pairs otherwise ≥4.6:1.",
+      "falsifier": "Labels below 14px or text below 4.5:1; scaled SVG font sizes by rendered width and computed blended contrast.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "label size and text contrast" }
+    },
+    {
+      "id": "R-26", "source": "Keep existing skip link, labels, focus, live announcements, disclosure semantics and reduced-motion support.",
+      "type": "DIRECT", "criterion": "Selection, assessment, NOAA errors and AI results are announced through live regions, and controls carry accessible names.",
+      "method": "code-read", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "Selected node role=status aria-live=polite (Dashboard.tsx:20); assessment aria-live polite atomic (AssessmentPanel.tsx:18); NOAA banners role=alert; Gemma aria-live (GemmaPanel.tsx:81); sliders labelled + aria-valuetext '120 kilowatts, simulated network demand'; SVG nodes role=button aria-label/aria-pressed; skip link focused first. See B-05 (strip label hides values) and B-07 (chatty announcements).",
+      "falsifier": "A state change with no live region or an unnamed control; read markup and tested a11y tree names.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "status announcements and control names" }
+    },
+    {
+      "id": "R-27", "source": "Preferred targets 44×44 CSS px for demo/touch comfort. WCAG 2.2 AA minimum is 24×24 with specified exceptions",
+      "type": "DIRECT", "criterion": "Interactive targets meet 24×24 or a WCAG exception, with 44px used for primary controls.",
+      "method": "preview", "weight": "MEDIUM", "verdict": "MET", "concept": false,
+      "evidence": "Buttons, segmented control, node list, summaries, number field min-height 44px; under-24 items are inline text links (exception) and the 20px checkbox inside its clickable label. SVG connector hit areas ~47×14px at 390 have the list-button equivalent (exception).",
+      "falsifier": "A primary control under 24px without equivalent; measured rects at 1440 and 390.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "interactive target sizes" }
+    },
+    {
+      "id": "R-28", "source": "prefers-reduced-motion: remove atmosphere, camera interpolation and decorative transitions; preserve direct state updates.",
+      "type": "DIRECT", "criterion": "Reduced-motion users get no wave drift, spinner rotation or transitions while state updates remain immediate.",
+      "method": "code-read", "weight": "MEDIUM", "verdict": "MET", "concept": false,
+      "evidence": "globals.css:91 disables .nv-wave animation and transitions; globals.css:161 stops the spinner. No JS animation. Media-feature emulation was unavailable in the browser pane, so this is code-read evidence only.",
+      "falsifier": "A motion rule without a reduced-motion override; grepped animation/transition rules.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "motion rules under prefers-reduced-motion" }
+    },
+    {
+      "id": "R-29", "source": "The dashboard must run with a lightweight network placeholder even if Blender fails. … should not silently lose click-to-select.",
+      "type": "DIRECT", "criterion": "The SVG fallback renders Section and Plan from network.json with click and keyboard selection.",
+      "method": "preview", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "Section and Plan both render with 6 role=button nodes, aria-pressed synced; plan click/keyboard verified; no runtime dependency on the GLB (no three.js in package.json).",
+      "falsifier": "A blank view or lost selection when switching views; toggled SECTION/PLAN and selected.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "SVG network fallback" }
+    },
+    {
+      "id": "R-30", "source": "Cursor optionally imports GLB; use placeholder if export/model loading/picking unstable. (User: verify the 3D view and available fallback independently.)",
+      "type": "DIRECT", "criterion": "An in-site 3D view loads nodal_scene.glb and picks NODE__<id> groups.",
+      "method": "asset-check", "weight": "MEDIUM", "verdict": "UNVERIFIABLE", "concept": false,
+      "evidence": "No 3D view exists in the site: web/public/models/ is empty and package.json has no 3D library. visualization/exports/nodal_scene.glb exists (4.87 MB, 8 NODE__ groups incl. all six node IDs) but was authored by the assayer's runtime (Claude owns visualization/**), so it cannot be certified here (Rule 9). Needs an independent assayer if integrated.",
+      "falsifier": "A 3D canvas failing to load or pick; searched src for GLB/three usage and listed public/models.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "in-site 3D GLB view" }
+    },
+    {
+      "id": "R-31", "source": "One parent brand: NODAL. Family notation: NODAL / RIDGE, NODAL / CANYON, NODAL / CONNECTOR, NODAL / ATOL. Exact IDs use underscores (RIDGE_01). (Plus DESIGN_SYSTEM color table and type stacks.)",
+      "type": "DIRECT", "criterion": "Family notation, exact IDs, locked color tokens and the sans/mono stacks are used as specified.",
+      "method": "code-read", "weight": "MEDIUM", "verdict": "MET", "concept": false,
+      "evidence": "'NODAL / RIDGE · RIDGE_01' (Dashboard.tsx:22); globals.css:5-24 values equal DESIGN_SYSTEM tokens (#061b24, #0b2a36, #103945, #f1f1e9, #b4b9ae, #4fd1d9, #e7a477, #c9c4d8, #294854, #688792); font stacks match; panel titles 16px; tabular-nums on body; Unicode minus via signed(); no 'REEF NODE'.",
+      "falsifier": "A token value differing from the lock, a renamed ID or an extra family; diffed tokens and grepped names.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "brand notation, tokens and type stacks" }
+    },
+    {
+      "id": "R-32", "source": "Run production build, verify flow manually (Gate 4). (User: run relevant existing tests and type checks.)",
+      "type": "DIRECT", "criterion": "Unit tests, typecheck and production build pass on the audited source.",
+      "method": "manual", "weight": "HIGH", "verdict": "MET", "concept": false,
+      "evidence": "Isolated copy in scratchpad (no writes to web/, running server untouched): vitest 19/19 pass; tsc --noEmit exit 0; next build compiled, TypeScript finished, 3/3 static pages — on both snapshot sources. First isolated build attempt failed only because Turbopack rejects a symlinked node_modules; re-run with an APFS clone passed.",
+      "falsifier": "A failing test, type error or build error; ran each command and read output.",
+      "population": { "mode": "ENUMERATED", "source": "package.json scripts", "items": ["test", "typecheck", "build"], "checked": ["test", "typecheck", "build"] }
+    },
+    {
+      "id": "R-33", "source": "Final NODAL logo | Lucho | Temporary typographic placeholder clearly identified | Human supplies and approves file/proportions",
+      "type": "DIRECT", "criterion": "The header shows either a labelled placeholder or the human-approved logo file.",
+      "method": "asset-check", "weight": "MEDIUM", "verdict": "UNVERIFIABLE", "concept": false,
+      "evidence": "Snapshot 2 replaced the placeholder with public/brand/nodal-white.svg (alt 'NODAL'); Wordmark.tsx and README state it was supplied by the designer. The assayer has no record of Lucho's approval of this file or its proportions.",
+      "falsifier": "An unlabelled improvised mark; inspected Wordmark.tsx and the rendered header.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "header logo slot" }
+    },
+    {
+      "id": "R-34", "source": "User brief §1: Identify where terminology or hierarchy interrupts that journey. ADD voice: prefer 'simulated shortfall,' 'regional observation,' 'site suitability undetermined.'",
+      "type": "PROXY", "criterion": "Proxy logic: comprehension → the primary reading path uses plain-language labels and moves developer identifiers into disclosures.",
+      "method": "copy-read", "weight": "MEDIUM", "verdict": "PARTIAL", "concept": false,
+      "evidence": "Main path shows 'Rules triggered: NODAL-PWR-001 · … · verdict NODAL-VERDICT-001' between action and suitability (AssessmentPanel.tsx:40-44), the action ID in the action header (line 35), camelCase formula 'netPowerKw = simulatedGenerationKw − simulatedDemandKw', and 'Assessment f24c5e8e'. Plain labels otherwise good.",
+      "falsifier": "Machine identifiers in the main reading path; read the rendered assessment panel.",
+      "population": { "mode": "SINGLE_SUBJECT", "subject": "assessment panel primary reading path" }
+    },
+    {
+      "id": "R-35", "source": "README with team, build date, how to run, exact data URLs and AI model ID/terms, limitations, tech stack, track. Public GitHub repo and suitable license",
+      "type": "DIRECT", "criterion": "README content is present and accurate, a LICENSE exists, and the project is in a repository.",
+      "method": "asset-check", "weight": "HIGH", "verdict": "PARTIAL", "concept": false,
+      "evidence": "web/README.md has track, build date, model ID/terms, data URLs, limitations and an honest Gemma checkbox. No LICENSE file in the project (find depth 3) and no .git directory; README:95,105 leave both to the human.",
+      "falsifier": "Missing README sections, LICENSE or repo; read README and searched the tree.",
+      "population": { "mode": "ENUMERATED", "source": "HANDOFF §8 definition of done", "items": ["readme-content", "license", "repository"], "checked": ["readme-content", "license", "repository"] }
+    }
+  ]
+}
