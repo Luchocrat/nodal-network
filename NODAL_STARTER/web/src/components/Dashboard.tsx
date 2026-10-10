@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import AssessmentPanel, { signed } from "./AssessmentPanel";
+import { AssessmentCore, AssessmentLedger, signed } from "./AssessmentPanel";
+import ConceptFilm from "./ConceptFilm";
 import GemmaPanel from "./GemmaPanel";
 import NoaaPanel, { NoaaStrip, type NoaaState } from "./NoaaPanel";
 import Badge from "./Badge";
@@ -95,12 +96,14 @@ export default function Dashboard() {
       </nav>
 
       <main id="main">
-        <div className="grid row-a">
-          <div style={{ display: "grid", gap: 20, alignContent: "start", minWidth: 0 }}>
-          <section className="panel stratum" aria-labelledby="net-h">
+        <div className="stage">
+          <section className="panel stratum s-net" aria-labelledby="net-h">
             <header>
-              <h2 id="net-h">Network · 6 nodes + ATOL + seabed junction</h2>
-              <span style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+              <div className="net-title">
+                <h2 id="net-h">Network</h2>
+                <span className="net-sub">6 nodes + ATOL + seabed junction</span>
+              </div>
+              <span className="net-controls">
                 <Badge tag="CONCEPTUAL" />
                 <span className={`state-pill ${assessment.power.energyStatus}`} title="Cables turn amber when the simulated balance is a shortfall; node core glow follows allocated simulated demand">
                   NET {assessment.power.netPowerKw === null ? "—" : `${signed(assessment.power.netPowerKw)} kW`} · SIMULATED
@@ -113,11 +116,14 @@ export default function Dashboard() {
                     </button>
                   ))}
                 </span>
+                <a className="film-link" href="#film-h"><span className="mono">▶</span> Concept film · 47 s</a>
               </span>
             </header>
 
             <NetworkView selectedId={nodeId} onSelect={setNodeId} view={view} allocatedKw={allocatedKw} energyStatus={assessment.power.energyStatus} />
+          </section>
 
+          <div className="s-sel">
             <SelectedNode nodeId={nodeId} demandKw={scn.demandKw} allocatedKw={allocatedKw[nodeId] ?? 0} />
 
             <h3 id="nodesel" className="subhead">Select a computing node</h3>
@@ -138,16 +144,27 @@ export default function Dashboard() {
               <summary>Schema and view notes</summary>
               <p className="small dim">{network.provenance.notice} Coordinates: {network.coordinateSystem.description} Schema v{network.schemaVersion}. Glyph sizes are illustrative; Section view draws +Z slightly higher as a depth cue; cable colour is amber during a simulated shortfall and node core glow follows simulated allocation. It is not thermal modelling or telemetry.</p>
             </details>
-          </section>
-            <NoaaPanel state={noaa} onRefresh={() => void loadNoaa(true)} />
           </div>
 
-          <div style={{ display: "grid", gap: 20, alignContent: "start", minWidth: 0 }}>
+          <div className="s-rail">
             <ScenarioPanel value={scn} onChange={setScn} onReset={() => setScn(INITIAL)} />
-            <AssessmentPanel a={assessment} />
+            <AssessmentCore a={assessment} />
+          </div>
+
+          <div className="s-ai">
             <GemmaPanel request={explainRequest} assessment={assessment} onExplained={() => loadNoaa()} />
           </div>
+
+          <ConceptFilm />
         </div>
+
+        <section className="ledger" aria-labelledby="ledger-h">
+          <h2 id="ledger-h">Evidence ledger</h2>
+          <div className="ledger-grid">
+            <NoaaPanel state={noaa} onRefresh={() => void loadNoaa(true)} />
+            <AssessmentLedger a={assessment} />
+          </div>
+        </section>
       </main>
 
       <footer className="footer">
@@ -157,7 +174,7 @@ export default function Dashboard() {
         </div>
         <div>
           Data: <a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=8723214" target="_blank" rel="noreferrer">NOAA CO-OPS Virginia Key 8723214</a> · AI: Gemma 4 via the <a href="https://ai.google.dev/gemma/docs/core/gemma_on_gemini_api" target="_blank" rel="noreferrer">Gemini API</a> · Layout: <code>shared/network.json</code> v{network.schemaVersion} (hypothetical coordinates, not geographic).
-          Reference-board illustrations are concept art, not engineering drawings.
+          Reference-board illustrations are concept art, not engineering drawings. Concept film: AI-generated video (Seedance), edited in Remotion.
         </div>
       </footer>
     </div>
