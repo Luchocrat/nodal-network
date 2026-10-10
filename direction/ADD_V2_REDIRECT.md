@@ -208,3 +208,23 @@ The v1 direction was authored by Glyph; this v2 amendment is authored by Don Cla
 - Refusal: autoplay or muted-loop hero film. That is the v1 Forbidden Gravity "cinematic reef imagery inside a generic glowing AI dashboard."
 - Executor brief: [CURSOR_FILM_ADDENDUM.md](CURSOR_FILM_ADDENDUM.md).
 - Open for Lucho: the Seedance platform and terms for the README; his authorship credit wording; organizer clearance for an AI-generated film produced after the 3:30 PM build window.
+
+---
+
+## Build checkpoints
+
+**2026-10-10 16:31 EDT: Slices 1–2 (commit `3fa5e22`, branch `add-v2-reskin`, BUILD_ID `p7Cc90aQR_66m41YXaO0_`). Director inspection: HOLDS, with 2 DRIFTS corrected in Slice 3.**
+
+| Decision | Verdict | Evidence |
+|---|---|---|
+| DD-02 v2 type roles | HOLDS | Computed fonts: h2 and family name in Nyght Serif 22px; body, task and path in Aspekta; values, badges and waterline in IBM Plex Mono. 164 KB of fonts loaded; Nyght Medium not requested yet (unused). License files byte-match the Pantry sources |
+| DD-04 v2 tokens / water column | HOLDS | Tokens as specified; body gradient from surface to seabed; no glass, blur or glow |
+| DD-03 strata | HOLDS (partial by design) | Network, NOAA and Gemma sections unboxed with isobath hairlines; rail and assessment plates follow in Slice 3 |
+| Waterline | HOLDS | Full-bleed meniscus; readings in utility 28px; freshness and CACHED/OLD flags kept; the link now reads its content to screen readers (fixes audit B-05) |
+| Borderless network | HOLDS | Border removed; top mask fade; node IDs 20 viewBox units (≈15.5px at 1440, was 11.7px); glyph paths untouched |
+| Guided path | DRIFTS (mobile) | At 390px the "·" separators strand at line starts |
+| Responsive | DRIFTS (mobile) | No overflow at 1440/1280/768/720/390, but the ≤600px side gutter is ≈52px (shell 16 + band 36) against the 16px rule |
+| Behavior invariants | HOLDS | Assessment IDs `f24c5e8e` (+20) and `54b0d579` (−40) unchanged; src/lib, api, tests and network.json untouched since the brief; vitest 19/19 and tsc clean (isolated copy); keyboard focus ring visible on every stop |
+| Film assets (Step 1) | HOLDS | 1080p 27.6 MB, 720p 12.7 MB, poster at 27.5 s; nothing fetched by the page yet |
+
+Next: Slice 3 + film Steps 2–5, then Director checkpoint.
