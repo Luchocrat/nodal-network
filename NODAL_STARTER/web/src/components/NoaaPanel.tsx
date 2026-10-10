@@ -147,7 +147,7 @@ export default function NoaaPanel({ state, onRefresh }: { state: NoaaState; onRe
 
       {d && (
         <div className="obs-grid">
-          {d.products.map((p) => <Card key={p.product} p={p} now={now} />)}
+          {d.products.filter((p) => p.product !== "currents").map((p) => <Card key={p.product} p={p} now={now} />)}
         </div>
       )}
 

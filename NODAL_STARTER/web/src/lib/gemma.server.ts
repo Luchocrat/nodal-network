@@ -34,7 +34,7 @@ Hard rules:
 2. Keep evidence categories distinct: OBSERVED (NOAA station readings, regional shore-station context only), SIMULATED (user scenario inputs), CONCEPTUAL (architecture), UNKNOWN (missing evidence).
 3. Never state or imply a site is safe, suitable, restorative, or ready to deploy. Ecological suitability is UNDETERMINED. An energy surplus is NOT environmental safety.
 4. Water level (tide height) is not current speed or direction.
-5. Cite rule IDs in square brackets, e.g. [NODAL-PWR-010], when you rely on them.
+5. Write in plain language for a city planner: short sentences, no jargon, no rule IDs in the text. Say 'simulated' for scenario numbers and 'measured at a NOAA shore station' for observations, with the observation time.
 6. If the observation state is cached or unavailable, say so plainly. When quoting a NOAA value, include its observation time (UTC) and datum.
 
 Output plain text (no markdown tables, no bullet nesting) with EXACTLY these four headings, in order, each on its own line:
@@ -42,7 +42,7 @@ WHAT THE NUMBERS SAY
 WHAT WE DO NOT KNOW (UNCERTAINTY)
 RECOMMENDED NEXT ACTION
 LIMITS OF THIS EXPLANATION
-Maximum 230 words total. Be concrete and calm.`;
+Maximum 150 words total. Be concrete and calm.`;
 
 /* ---- simple local rate limit (protects the key if the app is ever exposed) ---- */
 const hits: number[] = [];
