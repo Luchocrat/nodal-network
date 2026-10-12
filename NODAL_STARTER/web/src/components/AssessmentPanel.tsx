@@ -5,14 +5,14 @@ import type { Assessment } from "@/lib/scenario";
 
 export const signed = (n: number) => (n > 0 ? `+${n}` : n < 0 ? `−${Math.abs(n)}` : "0");
 
-export default function AssessmentPanel({ a }: { a: Assessment }) {
+/** Rail core: net result, battery line, recommended action, suitability. Same `a` prop, no logic change. */
+export function AssessmentCore({ a }: { a: Assessment }) {
   const net = a.power.netPowerKw;
   const status = a.power.energyStatus;
   return (
-    <section className="panel" aria-labelledby="asm-h">
+    <section className="rail-sec" aria-labelledby="asm-h">
       <header>
         <h2 id="asm-h">Illustrative power balance &amp; next action</h2>
-        <span className="mono small dim" title="Same inputs always produce the same assessment ID">Assessment {a.assessmentId}</span>
       </header>
 
       <div aria-live="polite" aria-atomic="true">
@@ -24,7 +24,6 @@ export default function AssessmentPanel({ a }: { a: Assessment }) {
           <span className={`state-pill ${status}`}>{status === "SHORTFALL" ? "▼ SHORTFALL" : status === "ZERO_MARGIN" ? "ZERO MARGIN" : status === "SURPLUS" ? "SURPLUS" : "INVALID"}</span>
           <Badge tag="SIMULATED" />
         </div>
-        <div className="mono small dim">{a.power.formula}</div>
         {a.power.batteryRuntimeHours !== null && (
           <div className="mono small" style={{ marginTop: 6 }}>
             Battery runtime ≈ <strong>{a.power.batteryRuntimeHours} h</strong> <span className="dim">(optional, ignores losses)</span> <Badge tag="SIMULATED" />
@@ -37,12 +36,6 @@ export default function AssessmentPanel({ a }: { a: Assessment }) {
         </div>
       </div>
 
-      <div className="mono small" style={{ marginTop: 10 }}>
-        <span className="dim">Rules triggered: </span>
-        {a.rules.filter((r) => r.status === "TRIGGERED").map((r) => r.id).join(" · ")}
-        <span className="dim"> · verdict {a.verdict.id}</span>
-      </div>
-
       <div className="suit" role="status">
         <div className="h">
           Site ecological suitability: <strong>undetermined</strong> <Badge tag="UNKNOWN" />
@@ -51,6 +44,22 @@ export default function AssessmentPanel({ a }: { a: Assessment }) {
           Do not deploy yet. {a.dataGaps.length} local evidence categories are unknown, whatever the power balance. This prototype cannot establish ecological suitability or engineering safety.
         </p>
         <p className="scope">Power calculation uses simulated inputs; NOAA provides separate regional context.</p>
+      </div>
+    </section>
+  );
+}
+
+/** Ledger half: assessment ID, formula, rules triggered, and the three details. */
+export function AssessmentLedger({ a }: { a: Assessment }) {
+  return (
+    <div className="asm-ledger">
+      <div className="mono small dim" title="Same inputs always produce the same assessment ID">Assessment {a.assessmentId}</div>
+      <div className="mono small dim">{a.power.formula}</div>
+
+      <div className="mono small" style={{ marginTop: 10 }}>
+        <span className="dim">Rules triggered: </span>
+        {a.rules.filter((r) => r.status === "TRIGGERED").map((r) => r.id).join(" · ")}
+        <span className="dim"> · verdict {a.verdict.id}</span>
       </div>
 
       <details>
@@ -81,6 +90,6 @@ export default function AssessmentPanel({ a }: { a: Assessment }) {
         <summary>Assumptions ({a.assumptions.length})</summary>
         <ul className="small dim">{a.assumptions.map((x) => <li key={x}>{x}</li>)}</ul>
       </details>
-    </section>
+    </div>
   );
 }

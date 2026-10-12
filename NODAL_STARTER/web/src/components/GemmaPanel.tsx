@@ -74,7 +74,7 @@ export default function GemmaPanel({ request, assessment, onExplained }: { reque
   const outdated = done && done.forKey !== key;
 
   return (
-    <section className="panel" aria-labelledby="gem-h">
+    <section className="panel stratum" aria-labelledby="gem-h">
       <header>
         <h2 id="gem-h">AI explanation · Gemma 4</h2>
         <span className="mono small dim">{status?.model ?? "gemma-4-26b-a4b-it"} · via Gemini API (server-side)</span>
