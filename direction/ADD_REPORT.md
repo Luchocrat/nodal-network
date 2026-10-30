@@ -227,6 +227,7 @@ No direction amendment has occurred. The decisions are unchanged from the propos
 |---|---|---|---|---|---|
 | 2026-10-10 | Initial direction approval | proposed / version 0 | locked / version 1 | Lucho: “Approved” | A-led hybrid, thesis, Signature Move, DD-02/03/04/06 and their handoff expression; deferred fonts and authentic-asset choices remain separate |
 | 2026-10-10 | v2 skin amendment (Director: Don Claude, Redirect → Amend) | locked / version 1 | locked / version 2 | Lucho, explicit answers: Type “A · Aspekta + Nyght Serif”; Liquid “Water-column continuity”; “Lock v2 + send to Cursor” | DD-02 superseded (Pantry type trio); DD-03 superseded (strata, hero, sticky rail, ledger; proposition to header); DD-04 additive tokens + shell corner; Signature Move Tether rule; Forbidden Gravity adds liquid-glass refusal. v1 rows retained above as history. Ledger record of the font pairing deferred until production gates close and the pre-existing ledger change is resolved |
+| 2026-10-10 | v2.1 concept film added (Director: Don Claude) | locked / version 2 | locked / version 2.1 | Lucho: “add this video somewhere in the site as the potential architecture of the marine NODAL network” (inclusion GIVEN; placement delegated) | CH-08 Concept film: stage left column beside the sticky rail, click-to-play, tethered CONCEPTUAL, verbatim boundary caption (coral illustrative, reef siting unsurveyed, orbital scale imagined, assessment unchanged), text description; AI-generated provenance disclosed |
 
 ## Handoff Files
 

@@ -127,7 +127,7 @@ export default function NoaaPanel({ state, onRefresh }: { state: NoaaState; onRe
   const now = useNowMs();
   const f = freshness(state, now);
   return (
-    <section className="panel" aria-labelledby="noaa-h">
+    <section className="panel stratum" aria-labelledby="noaa-h">
       <header>
         <h2 id="noaa-h">Regional observations · NOAA Tides &amp; Currents</h2>
         <span style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
@@ -159,31 +159,41 @@ export default function NoaaPanel({ state, onRefresh }: { state: NoaaState; onRe
   );
 }
 
-/** Compact above-the-fold strip: same data, same freshness headline, links to the full panel. */
+/** Waterline: same data, same freshness headline, links to the full panel. */
 export function NoaaStrip({ state }: { state: NoaaState }) {
   const d = state.data;
   const now = useNowMs();
   const f = freshness(state, now);
   const items = ["water_temperature", "water_level"].map((id) => d?.products.find((p) => p.product === id));
+  // one observed-time label when both readings share a timestamp; otherwise one per reading
+  const times = items.filter((p) => p?.observation).map((p) => p!.observation!.observedAtUtc);
+  const sameTime = times.length > 0 && times.every((t) => t === times[0]);
+  const flag = (p: NoaaProductResult) => (p.state === "cached" ? " · CACHED" : liveAge(p.observation!, now).stale ? ` · OLD (${liveAge(p.observation!, now).age} min)` : "");
+  const warn = (p: NoaaProductResult) => p.state === "cached" || liveAge(p.observation!, now).stale;
   return (
     <a className="strip" href="#noaa-h">
       <span className="sr-only">Jump to NOAA details. </span>
-      <span className="mono small dim">Virginia Key, Miami · 8723214 · regional shore station</span>
+      <span className="wl-meta">Virginia Key, Miami · 8723214 · regional shore station</span>
       {items.map((p, i) =>
         p?.observation ? (
           <span key={p.product} className="sv">
-            <span className="dim small">{p.label}</span> <strong>{minus(p.observation.values[0].value)}</strong>{" "}
-            <span className="dim small">{p.observation.values[0].unit}{p.product === "water_level" ? " MLLW" : ""}</span>
-            <span className="mono small" style={{ color: p.state === "cached" || liveAge(p.observation, now).stale ? "var(--amber)" : "var(--muted)" }}>
-              {" "}· observed {fmt(p.observation.observedAtUtc, "UTC")}{p.state === "cached" ? " · CACHED" : liveAge(p.observation, now).stale ? ` · OLD (${liveAge(p.observation, now).age} min)` : ""}
-            </span>
+            <span className="lab">{p.label}</span>
+            <strong>{minus(p.observation.values[0].value)}</strong>
+            <span className="unit">{p.observation.values[0].unit}{p.product === "water_level" ? " MLLW" : ""}</span>
           </span>
         ) : (
-          <span key={items.length + i} className="sv"><span className="dim small">{i === 0 ? "Water temperature" : "Water level"}</span> <strong style={{ color: "var(--unknown)" }}>—</strong> <span className="dim small">{f.key === "loading" ? "fetching…" : "unavailable"}</span></span>
+          <span key={items.length + i} className="sv"><span className="lab">{i === 0 ? "Water temperature" : "Water level"}</span> <strong style={{ color: "var(--unknown)" }}>—</strong> <span className="unit">{f.key === "loading" ? "fetching…" : "unavailable"}</span></span>
         ),
       )}
-      <span className="mono small" style={{ color: f.tone, fontWeight: 700 }}>● {f.label}</span>
-      <Badge tag={d && d.products.some((p) => p.observation) ? "OBSERVED" : "UNKNOWN"} />
+      <span className="wl-right">
+        {sameTime
+          ? <span style={{ color: items.some((p) => p?.observation && warn(p)) ? "var(--amber)" : "var(--muted)" }}>observed {fmt(times[0], "UTC")}{items.map((p) => (p?.observation ? flag(p) : "")).find((x) => x) ?? ""}</span>
+          : items.map((p) => p?.observation && (
+              <span key={p.product} style={{ color: warn(p) ? "var(--amber)" : "var(--muted)" }}>{p.label}: observed {fmt(p.observation.observedAtUtc, "UTC")}{flag(p)}</span>
+            ))}
+        <span style={{ color: f.tone, fontWeight: 600 }}>● {f.label}</span>
+        <Badge tag={d && d.products.some((p) => p.observation) ? "OBSERVED" : "UNKNOWN"} />
+      </span>
     </a>
   );
 }

@@ -169,7 +169,7 @@ export default function NetworkView({ selectedId, onSelect, view, allocatedKw, e
       <linearGradient id="nodal-water" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stopColor="#0B3340" />
         <stop offset="0.55" stopColor="#07222D" />
-        <stop offset="1" stopColor="#041219" />
+        <stop offset="1" stopColor="#04121A" />
       </linearGradient>
       <linearGradient id="nodal-ray" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stopColor="#4FD1D9" stopOpacity="0.16" />
@@ -188,13 +188,13 @@ export default function NetworkView({ selectedId, onSelect, view, allocatedKw, e
           {Array.from({ length: 11 }, (_, i) => -20 + i * 5).map((x) => (
             <g key={x}>
               <line x1={tx(x)} x2={tx(x)} y1={20} y2={430} />
-              <text x={tx(x)} y={446} fill="var(--ivory-dim)" stroke="none" fontSize={13} textAnchor="middle" fontFamily="var(--font-mono)">{x} m</text>
+              <text x={tx(x)} y={446} fill="var(--ivory-dim)" stroke="none" fontSize={15} textAnchor="middle" fontFamily="var(--font-utility)">{x} m</text>
             </g>
           ))}
           {[0, 5, 10, 15].map((z) => (
             <g key={z}>
               <line x1={30} x2={970} y1={py(z)} y2={py(z)} />
-              <text x={34} y={py(z) - 5} fill="var(--ivory-dim)" stroke="none" fontSize={13} fontFamily="var(--font-mono)">Z {z}</text>
+              <text x={34} y={py(z) - 5} fill="var(--ivory-dim)" stroke="none" fontSize={15} fontFamily="var(--font-utility)">Z {z}</text>
             </g>
           ))}
         </g>
@@ -205,7 +205,7 @@ export default function NetworkView({ selectedId, onSelect, view, allocatedKw, e
         <g transform={`translate(${tx(0)} ${py(0)})`} aria-hidden="true">
           <circle r={50} fill="rgba(241,241,233,0.07)" stroke="var(--ivory)" strokeOpacity={0.6} strokeDasharray="4 5" />
           <circle r={14} fill="var(--core-metal)" stroke="var(--ivory-dim)" />
-          <text y={-58} textAnchor="middle" fill="var(--ivory)" fontSize={15} fontFamily="var(--font-mono)">ATOL_01 (surface) · JUNCTION_01 (−12 m, beneath)</text>
+          <text y={-58} textAnchor="middle" fill="var(--ivory)" fontSize={18} fontFamily="var(--font-utility)">ATOL_01 (surface) · JUNCTION_01 (−12 m, beneath)</text>
         </g>
         {nodes.map((n) => {
           const x = tx(n.position[0]), y = py(n.position[2]);
@@ -223,11 +223,11 @@ export default function NetworkView({ selectedId, onSelect, view, allocatedKw, e
             <g key={n.id} role="button" tabIndex={0} aria-pressed={sel} aria-label={`${n.label}, ${n.type}, ${n.id}`} className="nv-node" onClick={() => onSelect(n.id)} onKeyDown={onKey(n.id)}>
               <circle cx={x} cy={y} r={46} fill="transparent" className="nv-hit" />
               {sel && <circle cx={x} cy={y} r={44} fill="none" stroke="var(--ivory)" strokeWidth={2} strokeDasharray="5 4" />}
-              <text x={x} y={y + 62} textAnchor="middle" fontSize={15} fontFamily="var(--font-mono)" fill="var(--ivory)" fontWeight={sel ? 700 : 400}>{n.id}</text>
+              <text x={x} y={y + 62} textAnchor="middle" fontSize={20} fontFamily="var(--font-utility)" fill="var(--ivory)" fontWeight={sel ? 700 : 400}>{n.id}</text>
             </g>
           );
         })}
-        <text x={970} y={34} textAnchor="end" fontSize={14} fill="var(--ivory-dim)" fontFamily="var(--font-mono)">PLAN · +Z up · rotationYDeg applied · glyph sizes illustrative</text>
+        <text x={970} y={34} textAnchor="end" fontSize={15} fill="var(--ivory-dim)" fontFamily="var(--font-utility)">PLAN · +Z up · rotationYDeg applied · glyph sizes illustrative</text>
       </svg>
     );
   }
@@ -247,13 +247,13 @@ export default function NetworkView({ selectedId, onSelect, view, allocatedKw, e
         <polygon key={x} points={`${x},${SEC_WATER_Y} ${x + 60 + i * 6},${SEC_WATER_Y} ${x + 150},${seabedY} ${x + 70},${seabedY}`} fill="url(#nodal-ray)" />
       ))}
       <path className="nv-wave" d={`M-40 ${SEC_WATER_Y}q30 -7 60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0t60 0`} fill="none" stroke="var(--cyan)" strokeOpacity={0.5} strokeWidth={1.4} />
-      <text x={16} y={SEC_WATER_Y - 8} fontSize={13} fill="var(--ivory-dim)" fontFamily="var(--font-mono)">Y = 0 · arbitrary water-surface plane</text>
-      <text x={16} y={seabedY - 8} fontSize={13} fill="var(--ivory-dim)" fontFamily="var(--font-mono)">Y = −12 m</text>
+      <text x={16} y={SEC_WATER_Y - 8} fontSize={15} fill="var(--ivory-dim)" fontFamily="var(--font-utility)">Y = 0 · arbitrary water-surface plane</text>
+      <text x={16} y={seabedY - 8} fontSize={15} fill="var(--ivory-dim)" fontFamily="var(--font-utility)">Y = −12 m</text>
       <path d={seabed} fill="#0E1F22" stroke="var(--ivory-dim)" strokeOpacity={0.35} />
 
       {/* umbilical (behind canyon) */}
       <path d={`M${tx(0)} ${SEC_WATER_Y + 24}C${tx(0) - 8} ${SEC_WATER_Y + 80} ${tx(0) + 8} ${seabedY - 70} ${tx(0)} ${seabedY}`} fill="none" stroke={color} strokeWidth={3} />
-      <text x={tx(0) - 22} y={176} textAnchor="end" fontSize={14} fill="var(--ivory)" fontFamily="var(--font-mono)">UMBILICAL → JUNCTION_01 (Y −12 m)</text>
+      <text x={tx(0) - 22} y={176} textAnchor="end" fontSize={15} fill="var(--ivory)" fontFamily="var(--font-utility)">UMBILICAL → JUNCTION_01 (Y −12 m)</text>
 
       {/* seabed power/data links */}
       {network.connections.filter((c) => c.kind === "POWER_DATA").map((c) => {
@@ -295,13 +295,13 @@ export default function NetworkView({ selectedId, onSelect, view, allocatedKw, e
               {sel && <rect x={h.x} y={h.y} width={h.w} height={h.h} rx={10} fill="rgba(241,241,233,0.06)" stroke="var(--ivory)" strokeWidth={1.6 / sc} strokeDasharray="5 4" />}
             </g>
             <line x1={x} x2={x} y1={y + 6} y2={labelY(row) - 15} stroke="var(--ivory-dim)" strokeOpacity={0.45} strokeDasharray="2 3" />
-            <text x={x} y={labelY(row)} textAnchor="middle" fontSize={15} fontFamily="var(--font-mono)" fill="var(--ivory)" fontWeight={sel ? 700 : 400}>{n.id}</text>
+            <text x={x} y={labelY(row)} textAnchor="middle" fontSize={20} fontFamily="var(--font-utility)" fill="var(--ivory)" fontWeight={sel ? 700 : 400}>{n.id}</text>
           </g>
         );
       })}
-      <text x={tx(0) + 118} y={SEC_WATER_Y - 54} fontSize={15} fill="var(--ivory)" fontFamily="var(--font-mono)">ATOL_01 · surface hub</text>
-      <text x={tx(0) + 118} y={SEC_WATER_Y - 36} fontSize={13} fill="var(--ivory-dim)" fontFamily="var(--font-mono)">CONCEPTUAL</text>
-      <text x={984} y={452} textAnchor="end" fontSize={13} fill="var(--ivory-dim)" fontFamily="var(--font-mono)">SECTION · X → · deeper = lower · glyph sizes illustrative · depth cue: +Z drawn higher</text>
+      <text x={tx(0) + 118} y={SEC_WATER_Y - 54} fontSize={18} fill="var(--ivory)" fontFamily="var(--font-utility)">ATOL_01 · surface hub</text>
+      <text x={tx(0) + 118} y={SEC_WATER_Y - 36} fontSize={15} fill="var(--ivory-dim)" fontFamily="var(--font-utility)">CONCEPTUAL</text>
+      <text x={984} y={452} textAnchor="end" fontSize={15} fill="var(--ivory-dim)" fontFamily="var(--font-utility)">SECTION · X → · deeper = lower · glyph sizes illustrative · depth cue: +Z drawn higher</text>
     </svg>
   );
 }

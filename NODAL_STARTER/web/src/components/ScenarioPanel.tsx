@@ -19,14 +19,11 @@ interface Props {
 export default function ScenarioPanel({ value, onChange, onReset }: Props) {
   const set = (patch: Partial<ScenarioState>) => onChange({ ...value, ...patch });
   return (
-    <section className="panel" aria-labelledby="scn-h">
+    <section className="rail-sec" aria-labelledby="scn-h">
       <header>
         <h2 id="scn-h">Network scenario</h2>
         <Badge tag="SIMULATED" />
       </header>
-      <p className="small dim" style={{ margin: "0 0 4px" }}>
-        Network-wide illustrative inputs for a hypothetical network. Nothing here is measured at any installation; node selection only changes which share is displayed.
-      </p>
 
       <div className="field">
         <label htmlFor="demand">
@@ -56,10 +53,13 @@ export default function ScenarioPanel({ value, onChange, onReset }: Props) {
           <input id="batt" type="number" inputMode="decimal" min={LIMITS.batteryKwh.min} max={LIMITS.batteryKwh.max} step={LIMITS.batteryKwh.step} disabled={!value.batteryOn} value={value.batteryKwh} onChange={(e) => { if (e.target.value === "") return; const n = Number(e.target.value); if (Number.isFinite(n)) set({ batteryKwh: Math.min(LIMITS.batteryKwh.max, Math.max(LIMITS.batteryKwh.min, n)) }); }} />
           <span className="mono dim">kWh</span>
           {!value.batteryOn && <span className="small dim">not set → runtime UNKNOWN</span>}
+          <button type="button" className="btn ghost reset" onClick={onReset}>Reset scenario</button>
         </div>
       </div>
 
-      <button type="button" className="btn ghost" onClick={onReset}>Reset scenario</button>
+      <p className="small dim caption">
+        Network-wide illustrative inputs for a hypothetical network. Nothing here is measured at any installation; node selection only changes which share is displayed.
+      </p>
     </section>
   );
 }
