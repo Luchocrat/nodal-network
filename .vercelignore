@@ -1,0 +1,15 @@
+# CLI deploys run from the repo root (the Vercel project's Root Directory is NODAL_STARTER/web).
+# Upload only the app and the shared network contract its prebuild copies in.
+output
+nodal-film
+direction
+.claude
+.cursor
+NODAL_STARTER/visualization
+NODAL_STARTER/references
+NODAL_STARTER/prompts
+**/node_modules
+**/.next
+**/.cache
+.env*
+!.env.example
